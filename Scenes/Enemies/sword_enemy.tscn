@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyyqli7iqtir6"]
+[gd_scene load_steps=3 format=3 uid="uid://dyyqli7iqtir6"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_2wkh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ki30x"]
 
 [node name="SwordEnemy" type="CharacterBody2D"]
+script = ExtResource("1_2wkh4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

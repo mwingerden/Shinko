@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8rplj554k1ok"]
+
+[ext_resource type="Script" path="res://Scripts/Utility/TurnOrder.gd" id="1_kf11t"]
+
+[node name="TurnOrder" type="Node2D"]
+script = ExtResource("1_kf11t")
