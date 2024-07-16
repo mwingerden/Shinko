@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cul21ipddiisb"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_dsn3t"]
+[ext_resource type="Texture2D" uid="uid://bgax3msu3hmqe" path="res://Assets/Sprites/Utility/Selected.png" id="2_vvhpx"]
+[ext_resource type="Texture2D" uid="uid://bj6dj5o8jmjk7" path="res://icon.svg" id="3_b7kyx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4np2"]
+
+[node name="EnemySpear" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_dsn3t")
+
+[node name="Selected" type="Sprite2D" parent="." groups=["Enemy"]]
+visible = false
+position = Vector2(0, -17)
+scale = Vector2(3, 3)
+texture = ExtResource("2_vvhpx")
+vframes = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Enemy"]]
+texture = ExtResource("3_b7kyx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+shape = SubResource("RectangleShape2D_n4np2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["Enemy"]]
+
+[node name="Health" type="ProgressBar" parent="." groups=["Enemy"]]
+offset_left = -51.0
+offset_top = -99.0
+offset_right = 52.0
+offset_bottom = -72.0
+value = 100.0
