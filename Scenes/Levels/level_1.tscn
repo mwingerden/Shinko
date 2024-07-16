@@ -1,7 +1,79 @@
-[gd_scene load_steps=2 format=3 uid="uid://duk36yggkeau6"]
+[gd_scene load_steps=6 format=3 uid="uid://duk36yggkeau6"]
 
-[ext_resource type="PackedScene" uid="uid://c8rplj554k1ok" path="res://Scenes/Utility/turn_order.tscn" id="1_guh0u"]
+[ext_resource type="PackedScene" uid="uid://bbehuimg23t2u" path="res://Scenes/Utility/group_enemy_1.tscn" id="1_jtqnb"]
+[ext_resource type="Script" path="res://Scripts/Utility/battle.gd" id="1_n7xxg"]
+[ext_resource type="PackedScene" uid="uid://xph3348axmlc" path="res://Scenes/Player/player.tscn" id="3_xpy4m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bpa1"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubs5f"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Level1" type="Node2D"]
 
-[node name="TurnOrder" parent="." instance=ExtResource("1_guh0u")]
+[node name="Actions" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1600.0
+offset_bottom = 900.0
+
+[node name="Panel" type="Panel" parent="Actions"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -159.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5bpa1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Actions/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -160.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Attack" type="Button" parent="Actions/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_ubs5f")
+text = "Attack
+"
+
+[node name="Defend" type="Button" parent="Actions/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Defend
+"
+
+[node name="Item" type="Button" parent="Actions/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Item
+"
+
+[node name="Battle" type="Node2D" parent="."]
+script = ExtResource("1_n7xxg")
+
+[node name="Player" parent="Battle" instance=ExtResource("3_xpy4m")]
+position = Vector2(403, 360)
+
+[node name="GroupEnemy1" parent="Battle" instance=ExtResource("1_jtqnb")]
+position = Vector2(1119, 189)
+script = null
+
+[connection signal="pressed" from="Actions/Panel/HBoxContainer/Attack" to="Battle" method="_on_attack_pressed"]
