@@ -1,7 +1,81 @@
-[gd_scene load_steps=4 format=3 uid="uid://xph3348axmlc"]
+[gd_scene load_steps=9 format=3 uid="uid://xph3348axmlc"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_jew5l"]
-[ext_resource type="Texture2D" uid="uid://ccr26t01o547" path="res://Assets/Sprites/Player/Player_Axe_Idle.png.png" id="2_60wut"]
+[ext_resource type="Texture2D" uid="uid://cu10altbcsl4y" path="res://Assets/Sprites/Player/Player.png" id="2_pp8yo"]
+
+[sub_resource type="Animation" id="Animation_4xlfb"]
+resource_name = "sword"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_wgey8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_31fyj"]
+resource_name = "axe"
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.31, 0.54),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_kvvhf"]
+resource_name = "spear"
+length = 0.6
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.24, 0.39),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7p5e"]
+_data = {
+"RESET": SubResource("Animation_wgey8"),
+"axe": SubResource("Animation_31fyj"),
+"spear": SubResource("Animation_kvvhf"),
+"sword": SubResource("Animation_4xlfb")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyda8"]
 
@@ -10,10 +84,14 @@ script = ExtResource("1_jew5l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
-texture = ExtResource("2_60wut")
-vframes = 3
+texture = ExtResource("2_pp8yo")
+hframes = 3
+vframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y7p5e")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hyda8")

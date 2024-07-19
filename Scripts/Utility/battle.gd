@@ -60,3 +60,5 @@ func enemies_turn():
 	$"../Actions/Panel/HBoxContainer/Item".disabled = false
 	enemy_turn = false
 	
+func _on_swap_weapon_pressed():
+	player.swap_weapon()

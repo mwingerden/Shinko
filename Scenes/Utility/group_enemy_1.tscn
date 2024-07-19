@@ -11,7 +11,7 @@ script = ExtResource("1_ujwlj")
 [node name="EnemyAxe" parent="." instance=ExtResource("2_0adsd")]
 
 [node name="EnemySpear" parent="." instance=ExtResource("3_v7mxa")]
-position = Vector2(106, 189)
+position = Vector2(142, 197)
 
 [node name="EnemySword" parent="." instance=ExtResource("4_qy2qn")]
-position = Vector2(-44, 361)
+position = Vector2(-38, 412)
