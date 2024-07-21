@@ -52,6 +52,13 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ubs5f")
 text = "Attack
 "
 
+[node name="Swap Weapon" type="Button" parent="Actions/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Swap Weapon
+"
+
 [node name="Defend" type="Button" parent="Actions/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -77,3 +84,5 @@ position = Vector2(1119, 189)
 script = null
 
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Attack" to="Battle" method="_on_attack_pressed"]
+[connection signal="pressed" from="Actions/Panel/HBoxContainer/Swap Weapon" to="Battle" method="_on_swap_weapon_pressed"]
+[connection signal="pressed" from="Actions/Panel/HBoxContainer/Defend" to="Battle" method="_on_defend_pressed"]
