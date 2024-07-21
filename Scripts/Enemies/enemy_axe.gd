@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var progress_bar = $Health
 @onready var animation_player = $AnimationPlayer
 var selected = false
+var weapon = "axe"
 
 @export var MAX_HEALTH = 2
 var current_health = MAX_HEALTH:
@@ -34,3 +35,6 @@ func take_damage(value):
 
 func get_current_health():
 	return current_health
+	
+func get_weapon_type():
+	return weapon

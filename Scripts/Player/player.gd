@@ -39,3 +39,6 @@ func _play_animation():
 
 func take_damage(value):
 	current_health -= value
+	
+func current_weapon():
+	return current_state
