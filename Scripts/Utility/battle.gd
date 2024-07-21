@@ -104,7 +104,7 @@ func _on_back_pressed():
 	show_actions_menu(true)
 
 func _on_shield_pressed():
-	print("shield pressed")
+	player.increase_shield()
 
 func _on_health_pressed():
 	pass # Replace with function body.
