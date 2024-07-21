@@ -10,11 +10,14 @@ enum attack_type {NUETRAL, CRIT, RESIST}
 var current_attack_type = attack_type.NUETRAL
 var damage
 var defend = false
+@onready var actions_menu = $"../Actions"
+@onready var item_menu = $"../Items"
 
 func _ready():
 	enemies = find_children("Enemy*")
 	enemies[0]._select()
 	player = get_child(0)
+	show_actions_menu(true)
 	
 func _process(delta):	
 	if !enemy_turn and Input.is_action_just_pressed("ui_up"):
@@ -76,6 +79,10 @@ func enemies_turn():
 	defend = false
 	disable_buttons(false)
 	
+func show_actions_menu(value):
+	actions_menu.visible = value
+	item_menu.visible = !value
+	
 func _on_swap_weapon_pressed():
 	player.swap_weapon()
 	
@@ -83,11 +90,21 @@ func disable_buttons(value):
 	$"../Actions/Panel/HBoxContainer/Attack".disabled = value
 	$"../Actions/Panel/HBoxContainer/Swap Weapon".disabled = value
 	$"../Actions/Panel/HBoxContainer/Defend".disabled = value
-	$"../Actions/Panel/HBoxContainer/Item".disabled = value
-
+	$"../Actions/Panel/HBoxContainer/Items".disabled = value
 
 func _on_defend_pressed():
 	defend = true
 	disable_buttons(true)
 	enemies_turn()
-	
+
+func _on_items_pressed():
+	show_actions_menu(false)
+
+func _on_back_pressed():
+	show_actions_menu(true)
+
+func _on_shield_pressed():
+	print("shield pressed")
+
+func _on_health_pressed():
+	pass # Replace with function body.
