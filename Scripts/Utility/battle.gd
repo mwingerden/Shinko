@@ -9,6 +9,7 @@ var enemy_turn = false
 enum attack_type {NUETRAL, CRIT, RESIST}
 var current_attack_type = attack_type.NUETRAL
 var damage
+var defend = false
 
 func _ready():
 	enemies = find_children("Enemy*")
@@ -34,8 +35,7 @@ func switch_focus(x,y):
 	enemies[y]._unselect()
 
 func _on_attack_pressed():
-	turn_on_off_buttons(true)
-	enemy_turn = true
+	disable_buttons(true)
 	for i in enemies.size():
 		if enemies[i].is_selected():
 			damage = 1
@@ -59,25 +59,35 @@ func _on_attack_pressed():
 	enemies_turn()
 	
 func enemies_turn():
+	enemy_turn = true
 	for i in enemies.size():
 		#Perform Attck Animation
 		damage = 1
-		if enemies[i].get_weapon_type() == "axe" and player.current_weapon() == 2:
-			damage = damage * 2
-		elif enemies[i].get_weapon_type() == "spear" and player.current_weapon() == 0:
-			damage = damage * 2
-		elif enemies[i].get_weapon_type() == "sword" and player.current_weapon() == 1:
-			damage = damage * 2
-		player.take_damage(damage)
+		if !defend:
+			if enemies[i].get_weapon_type() == "axe" and player.current_weapon() == 2:
+				damage = damage * 2
+			elif enemies[i].get_weapon_type() == "spear" and player.current_weapon() == 0:
+				damage = damage * 2
+			elif enemies[i].get_weapon_type() == "sword" and player.current_weapon() == 1:
+				damage = damage * 2
+			player.take_damage(damage)
 		await get_tree().create_timer(.5).timeout
 	enemy_turn = false
-	turn_on_off_buttons(false)
+	defend = false
+	disable_buttons(false)
 	
 func _on_swap_weapon_pressed():
 	player.swap_weapon()
 	
-func turn_on_off_buttons(value):
+func disable_buttons(value):
 	$"../Actions/Panel/HBoxContainer/Attack".disabled = value
 	$"../Actions/Panel/HBoxContainer/Swap Weapon".disabled = value
 	$"../Actions/Panel/HBoxContainer/Defend".disabled = value
 	$"../Actions/Panel/HBoxContainer/Item".disabled = value
+
+
+func _on_defend_pressed():
+	defend = true
+	disable_buttons(true)
+	enemies_turn()
+	
