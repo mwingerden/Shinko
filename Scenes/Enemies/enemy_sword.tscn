@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://dyyqli7iqtir6"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_2wkh4"]
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy_sword.gd" id="1_3gmax"]
 [ext_resource type="Texture2D" uid="uid://bj6dj5o8jmjk7" path="res://icon.svg" id="2_b4u55"]
 [ext_resource type="Texture2D" uid="uid://bgax3msu3hmqe" path="res://Assets/Sprites/Utility/Selected.png" id="2_swqhw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ki30x"]
 
 [node name="EnemySword" type="CharacterBody2D" groups=["Enemy"]]
-script = ExtResource("1_2wkh4")
+script = ExtResource("1_3gmax")
 
 [node name="Selected" type="Sprite2D" parent="." groups=["Enemy"]]
 visible = false
