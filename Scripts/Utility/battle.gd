@@ -19,6 +19,7 @@ func _ready():
 	player = get_child(0)
 	show_actions_menu(true)
 	
+@warning_ignore("unused_parameter")
 func _process(delta):	
 	if !enemy_turn and Input.is_action_just_pressed("ui_up"):
 		if index > 0:
@@ -104,7 +105,13 @@ func _on_back_pressed():
 	show_actions_menu(true)
 
 func _on_shield_pressed():
-	print("shield pressed")
+	player.increase_shield()
+	show_actions_menu(true)
+	await get_tree().create_timer(.5).timeout
+	enemies_turn()
 
 func _on_health_pressed():
-	pass # Replace with function body.
+	player.heal()
+	show_actions_menu(true)
+	await get_tree().create_timer(.5).timeout
+	enemies_turn()
