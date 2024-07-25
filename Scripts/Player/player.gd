@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @export var MAX_HEALTH = 20
 @export var MAX_SHIELD = 10
+@export var heal_amount = 1
+@export var increase_shield_amount = 1
 var shield_on = false
 var current_health = MAX_HEALTH:
 	set(value):
@@ -22,12 +24,14 @@ var current_state = state.SWORD
 func _ready():
 	show_health_bar(true)
 
+@warning_ignore("unused_parameter")
 func _process(delta):
 	_play_animation()
 
 func show_health_bar(value):
 	health_progress_bar.visible = value
 	shield_progress_bar.visible = !value
+	shield_on = !value
 
 func swap_weapon():
 	if current_state == state.SWORD:
@@ -57,6 +61,9 @@ func _play_animation():
 func take_damage(value):
 	if shield_on:
 		current_shield -= float(value) / 2.0
+		if current_shield <= 0:
+			current_shield = 0
+			show_health_bar(true)
 	else:
 		current_health -= value
 	
@@ -64,7 +71,10 @@ func current_weapon():
 	return current_state
 	
 func increase_shield():
-	shield_on = true
 	if current_shield <= MAX_SHIELD:
-		current_shield += 1
+		current_shield += increase_shield_amount
 	show_health_bar(false)
+	
+func heal():
+	if current_health <= MAX_HEALTH:
+		current_health += heal_amount
