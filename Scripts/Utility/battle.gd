@@ -10,8 +10,12 @@ enum attack_type {NUETRAL, CRIT, RESIST}
 var current_attack_type = attack_type.NUETRAL
 var damage
 var defend = false
+var health_potion_count = 1
+var shield_potion_count = 1
 @onready var actions_menu = $"../Actions"
 @onready var item_menu = $"../Items"
+@onready var shield_potion_button = $"../Items/Panel/HBoxContainer/Shield"
+@onready var health_potion_button = $"../Items/Panel/HBoxContainer/Health"
 
 func _ready():
 	enemies = find_children("Enemy*")
@@ -33,7 +37,10 @@ func _process(delta):
 	if enemies.size() <= 0:
 		await get_tree().create_timer(.5).timeout
 		get_tree().quit()
-			
+	
+	health_potion_button.set_text(str(health_potion_count)+ " Health Potions")
+	shield_potion_button.set_text(str(shield_potion_count) + " Shield Potions")
+
 func switch_focus(x,y):
 	enemies[x]._select()
 	enemies[y]._unselect()
@@ -105,13 +112,17 @@ func _on_back_pressed():
 	show_actions_menu(true)
 
 func _on_shield_pressed():
-	player.increase_shield()
-	show_actions_menu(true)
-	await get_tree().create_timer(.5).timeout
-	enemies_turn()
+	if shield_potion_count > 0:
+		shield_potion_count -= 1
+		player.increase_shield()
+		show_actions_menu(true)
+		await get_tree().create_timer(.5).timeout
+		enemies_turn()
 
 func _on_health_pressed():
-	player.heal()
-	show_actions_menu(true)
-	await get_tree().create_timer(.5).timeout
-	enemies_turn()
+	if health_potion_count > 0:
+		health_potion_count -= 1
+		player.heal()
+		show_actions_menu(true)
+		await get_tree().create_timer(.5).timeout
+		enemies_turn()
