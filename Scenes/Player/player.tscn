@@ -3,22 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_jew5l"]
 [ext_resource type="Texture2D" uid="uid://cu10altbcsl4y" path="res://Assets/Sprites/Player/Player.png" id="2_pp8yo"]
 
-[sub_resource type="Animation" id="Animation_4xlfb"]
-resource_name = "sword"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 5)]
-}
-
 [sub_resource type="Animation" id="Animation_wgey8"]
 length = 0.001
 tracks/0/type = "value"
@@ -69,6 +53,22 @@ tracks/0/keys = {
 "values": [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_4xlfb"]
+resource_name = "sword"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y7p5e"]
 _data = {
 "RESET": SubResource("Animation_wgey8"),
@@ -97,8 +97,18 @@ libraries = {
 shape = SubResource("RectangleShape2D_hyda8")
 
 [node name="Health" type="ProgressBar" parent="."]
-offset_left = -75.0
-offset_top = -152.0
-offset_right = 74.0
-offset_bottom = -125.0
+visible = false
+offset_left = -86.0
+offset_top = -140.0
+offset_right = 82.0
+offset_bottom = -113.0
+value = 100.0
+
+[node name="Shield" type="ProgressBar" parent="."]
+offset_left = -86.0
+offset_top = -140.0
+offset_right = 82.0
+offset_bottom = -113.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 value = 100.0
