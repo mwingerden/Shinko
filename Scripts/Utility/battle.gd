@@ -98,7 +98,7 @@ func enemies_turn():
 
 func spawn_potion(pos):
 	var rand_drop = rng.randi_range(1, 100)
-	if rand_drop <= 99:
+	if rand_drop <= 70:
 		var rand_potion = rng.randi_range(0, 1)
 		if rand_potion:
 			potion = health_potion.instantiate()
@@ -125,6 +125,7 @@ func show_actions_menu(value):
 	
 func _on_swap_weapon_pressed():
 	player.swap_weapon()
+	enemies_turn()
 	
 func disable_buttons(value):
 	$"../Actions/Panel/HBoxContainer/Attack".disabled = value
