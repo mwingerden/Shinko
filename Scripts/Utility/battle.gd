@@ -1,5 +1,6 @@
 extends Node2D
 
+var rng = RandomNumberGenerator.new()
 var enemies = []
 var player = null
 var action_queue = []
@@ -9,11 +10,15 @@ var enemy_turn = false
 enum attack_type {NUETRAL, CRIT, RESIST}
 var current_attack_type = attack_type.NUETRAL
 var damage
+var potion
 var defend = false
+var potion_spawn = false
 var health_potion_count = 1
 var shield_potion_count = 1
 @onready var actions_menu = $"../Actions"
 @onready var item_menu = $"../Items"
+var health_potion = preload("res://Scenes/Utility/potion_health.tscn")
+var shield_potion = preload("res://Scenes/Utility/potion_shield.tscn")
 @onready var shield_potion_button = $"../Items/Panel/HBoxContainer/Shield"
 @onready var health_potion_button = $"../Items/Panel/HBoxContainer/Health"
 
@@ -59,6 +64,7 @@ func _on_attack_pressed():
 			enemies[i].take_damage(damage)
 			if enemies[i].get_current_health() <= 0:
 				#Play Death Animation Here
+				spawn_potion(enemies[i].global_position)
 				enemies[i].queue_free()
 				enemies.remove_at(i)
 				if enemies.size() > 0:
@@ -85,14 +91,41 @@ func enemies_turn():
 		await get_tree().create_timer(.5).timeout
 	enemy_turn = false
 	defend = false
+	if potion_spawn: 
+		collect_potion()
+		potion_spawn = false
 	disable_buttons(false)
-	
+
+func spawn_potion(pos):
+	var rand_drop = rng.randi_range(1, 100)
+	if rand_drop <= 70:
+		var rand_potion = rng.randi_range(0, 1)
+		if rand_potion:
+			potion = health_potion.instantiate()
+			#play spawn animation and sound effect
+		else:
+			potion = shield_potion.instantiate()
+			#play spawn animation and sound effect
+		potion_spawn = true
+		potion.position = pos
+		add_child(potion)
+
+func collect_potion():
+	if potion.name == "PotionHealth":
+		health_potion_count += 1
+	elif potion.name == "PotionShield":
+		shield_potion_count += 1
+	#play despawn animation
+	potion.queue_free()
+	await get_tree().create_timer(.5).timeout
+
 func show_actions_menu(value):
 	actions_menu.visible = value
 	item_menu.visible = !value
 	
 func _on_swap_weapon_pressed():
 	player.swap_weapon()
+	enemies_turn()
 	
 func disable_buttons(value):
 	$"../Actions/Panel/HBoxContainer/Attack".disabled = value
