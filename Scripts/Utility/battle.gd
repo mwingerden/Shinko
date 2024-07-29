@@ -2,7 +2,6 @@ extends Node2D
 
 var rng = RandomNumberGenerator.new()
 var enemies = []
-var player = null
 var action_queue = []
 var is_battling = false
 var index = 0
@@ -13,8 +12,6 @@ var damage
 var potion
 var defend = false
 var potion_spawn = false
-var health_potion_count = 1
-var shield_potion_count = 1
 @onready var actions_menu = $"../Actions"
 @onready var item_menu = $"../Items"
 var health_potion = preload("res://Scenes/Utility/potion_health.tscn")
@@ -25,11 +22,11 @@ var shield_potion = preload("res://Scenes/Utility/potion_shield.tscn")
 func _ready():
 	enemies = find_children("Enemy*")
 	enemies[0]._select()
-	player = get_child(0)
+	#player = get_child(0)
 	show_actions_menu(true)
 	
 @warning_ignore("unused_parameter")
-func _process(delta):	
+func _process(delta):
 	if !enemy_turn and Input.is_action_just_pressed("ui_up"):
 		if index > 0:
 			index -= 1
@@ -43,8 +40,8 @@ func _process(delta):
 		await get_tree().create_timer(.5).timeout
 		get_tree().quit()
 	
-	health_potion_button.set_text(str(health_potion_count)+ " Health Potions")
-	shield_potion_button.set_text(str(shield_potion_count) + " Shield Potions")
+	health_potion_button.set_text(str(Global.health_potion_count)+ " Health Potions")
+	shield_potion_button.set_text(str(Global.shield_potion_count) + " Shield Potions")
 
 func switch_focus(x,y):
 	enemies[x]._select()
@@ -55,11 +52,11 @@ func _on_attack_pressed():
 	for i in enemies.size():
 		if enemies[i].is_selected():
 			damage = 1
-			if enemies[i].get_weapon_type() == "axe" and player.current_weapon() == 0:
+			if enemies[i].get_weapon_type() == "axe" and Global.player_current_weapon == 0:
 				damage = damage * 2
-			elif enemies[i].get_weapon_type() == "spear" and player.current_weapon() == 1:
+			elif enemies[i].get_weapon_type() == "spear" and Global.player_current_weapon == 1:
 				damage = damage * 2
-			elif enemies[i].get_weapon_type() == "sword" and player.current_weapon() == 2:
+			elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == 2:
 				damage = damage * 2
 			enemies[i].take_damage(damage)
 			if enemies[i].get_current_health() <= 0:
@@ -81,13 +78,14 @@ func enemies_turn():
 		#Perform Attck Animation
 		damage = 1
 		if !defend:
-			if enemies[i].get_weapon_type() == "axe" and player.current_weapon() == 2:
+			if enemies[i].get_weapon_type() == "axe" and Global.player_current_weapon == Global.weapon.SPEAR:
 				damage = damage * 2
-			elif enemies[i].get_weapon_type() == "spear" and player.current_weapon() == 0:
+			elif enemies[i].get_weapon_type() == "spear" and Global.player_current_weapon == Global.weapon.SWORD:
 				damage = damage * 2
-			elif enemies[i].get_weapon_type() == "sword" and player.current_weapon() == 1:
+			elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == Global.weapon.AXE:
 				damage = damage * 2
-			player.take_damage(damage)
+			#player.take_damage(damage)
+			SignalManager.player_take_damage.emit(damage)
 		await get_tree().create_timer(.5).timeout
 	enemy_turn = false
 	defend = false
@@ -112,9 +110,9 @@ func spawn_potion(pos):
 
 func collect_potion():
 	if potion.name == "PotionHealth":
-		health_potion_count += 1
+		Global.health_potion_count += 1
 	elif potion.name == "PotionShield":
-		shield_potion_count += 1
+		Global.shield_potion_count += 1
 	#play despawn animation
 	potion.queue_free()
 	await get_tree().create_timer(.5).timeout
@@ -124,7 +122,7 @@ func show_actions_menu(value):
 	item_menu.visible = !value
 	
 func _on_swap_weapon_pressed():
-	player.swap_weapon()
+	SignalManager.weapon_swap.emit()
 	enemies_turn()
 	
 func disable_buttons(value):
@@ -145,17 +143,19 @@ func _on_back_pressed():
 	show_actions_menu(true)
 
 func _on_shield_pressed():
-	if shield_potion_count > 0:
-		shield_potion_count -= 1
-		player.increase_shield()
+	if Global.shield_potion_count > 0:
+		Global.shield_potion_count -= 1
+		#player.increase_shield()
+		SignalManager.player_increase_shield.emit()
 		show_actions_menu(true)
 		await get_tree().create_timer(.5).timeout
 		enemies_turn()
 
 func _on_health_pressed():
-	if health_potion_count > 0:
-		health_potion_count -= 1
-		player.heal()
+	if Global.health_potion_count > 0:
+		Global.health_potion_count -= 1
+		#player.heal()
+		SignalManager.player_increase_health.emit()
 		show_actions_menu(true)
 		await get_tree().create_timer(.5).timeout
 		enemies_turn()

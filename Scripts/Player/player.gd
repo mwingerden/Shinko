@@ -18,10 +18,13 @@ var current_shield = 0:
 		current_shield = value
 		_update_shield_bar()
 		_play_animation()
-enum state {SWORD, AXE, SPEAR}
-var current_state = state.SWORD
 
 func _ready():
+	Global.player_current_weapon = Global.weapon.SWORD
+	SignalManager.weapon_swap.connect(swap_weapon)
+	SignalManager.player_take_damage.connect(take_damage)
+	SignalManager.player_increase_health.connect(heal)
+	SignalManager.player_increase_shield.connect(increase_shield)
 	show_health_bar(true)
 
 @warning_ignore("unused_parameter")
@@ -34,14 +37,17 @@ func show_health_bar(value):
 	shield_on = !value
 
 func swap_weapon():
-	if current_state == state.SWORD:
-		current_state = state.AXE
+	if Global.player_current_weapon == Global.weapon.SWORD:
+		#current_weapon = weapon.AXE
+		Global.player_current_weapon = Global.weapon.AXE
 		#print("Switched to Spear")
-	elif current_state == state.AXE:
-		current_state = state.SPEAR
+	elif Global.player_current_weapon == Global.weapon.AXE:
+		#current_weapon = weapon.SPEAR
+		Global.player_current_weapon = Global.weapon.SPEAR
 		#print("Switched to Sword")
-	elif current_state == state.SPEAR:
-		current_state = state.SWORD
+	elif Global.player_current_weapon == Global.weapon.SPEAR:
+		#current_weapon = weapon.SWORD
+		Global.player_current_weapon = Global.weapon.SWORD
 		#print("Switched to Axe")
 
 func _update_health_bar():
@@ -51,11 +57,11 @@ func _update_shield_bar():
 	shield_progress_bar.value = (float(current_shield) / MAX_SHIELD) * 100
 	
 func _play_animation():
-	if current_state == state.SWORD:
+	if Global.player_current_weapon == Global.weapon.SWORD:
 		animation_player.play("sword")
-	elif current_state == state.AXE:
+	elif Global.player_current_weapon == Global.weapon.AXE:
 		animation_player.play("axe")
-	elif current_state == state.SPEAR:
+	elif Global.player_current_weapon == Global.weapon.SPEAR:
 		animation_player.play("spear")
 
 func take_damage(value):
@@ -67,8 +73,8 @@ func take_damage(value):
 	else:
 		current_health -= value
 	
-func current_weapon():
-	return current_state
+#func get_current_weapon():
+	#return current_weapon
 	
 func increase_shield():
 	if current_shield <= MAX_SHIELD:
