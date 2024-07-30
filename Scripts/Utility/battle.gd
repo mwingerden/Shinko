@@ -20,6 +20,8 @@ var shield_potion = preload("res://Scenes/Utility/potion_shield.tscn")
 @onready var health_potion_button = $"../Items/Panel/HBoxContainer/Health"
 
 func _ready():
+	if str(get_path()) == "/root/Level1/Battle":
+		SignalManager.player_restart.emit()
 	enemies = find_children("Enemy*")
 	enemies[0]._select()
 	#player = get_child(0)
@@ -86,8 +88,10 @@ func enemies_turn():
 				damage = damage * 2
 			elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == Global.weapon.AXE:
 				damage = damage * 2
-			#player.take_damage(damage)
+				
 			SignalManager.player_take_damage.emit(damage)
+		if Global.player_current_health <= 0:
+			break
 		await get_tree().create_timer(.5).timeout
 	enemy_turn = false
 	defend = false
@@ -101,7 +105,7 @@ func player_death():
 
 func spawn_potion(pos):
 	var rand_drop = rng.randi_range(1, 100)
-	if rand_drop <= 70:
+	if rand_drop <= 99:
 		var rand_potion = rng.randi_range(0, 1)
 		if rand_potion:
 			potion = health_potion.instantiate()

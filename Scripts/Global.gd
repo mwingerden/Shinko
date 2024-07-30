@@ -1,6 +1,7 @@
 extends Node
 
-var exp_count = 1
+var starting_exp = 0
+var current_exp_count = starting_exp
 var health_potion_count = 1
 var shield_potion_count = 1
 var player_current_weapon = 0
@@ -8,6 +9,21 @@ enum weapon {SWORD, AXE, SPEAR}
 var level_sword = 1
 var level_axe = 1
 var level_spear = 1
+var MAX_PLAYER_HEALTH = 1
+var MAX_PLAYER_SHIELD = 10
+var heal_amount = 1
+var increase_shield_amount = 1
+var shield_on = false
+var player_current_health = MAX_PLAYER_HEALTH
+	#set(value):
+		#current_health = value
+		#_update_health_bar()
+		#_play_animation()
+var player_current_shield = 0
+	#set(value):
+		#current_shield = value
+		#_update_shield_bar()
+		#_play_animation()
 
 func _ready():
 	SignalManager.upgrade_sword.connect(upgrade_sword)
@@ -30,7 +46,7 @@ func upgrade_health():
 	level_sword += 1
 	
 func exp_add():
-	exp_count += 1
+	current_exp_count += 1
 	
 func exp_sub():
-	exp_count -= 1
+	current_exp_count -= 1

@@ -8,11 +8,9 @@ extends Node2D
 @onready var Exp = $Exp
 
 func _ready():
+	continue_button.disabled = true
 	set_text()
-
-@warning_ignore("unused_parameter")
-func _process(delta):
-	pass
+	check_exp()
 
 func _on_sword_upgrade_pressed():
 	SignalManager.upgrade_sword.emit()
@@ -43,14 +41,15 @@ func set_text():
 	axe_upgrade_button.text = "Axe Lvl. " + str(Global.level_axe)
 	spear_upgrade_button.text = "Spear Lvl. " + str(Global.level_spear)
 	health_upgrade_button.text = "Health Lvl. " + str(Global.level_sword)
-	Exp.text = "Exp: " + str(Global.exp_count)
+	Exp.text = "Exp: " + str(Global.current_exp_count)
 	
 func check_exp():
-	if Global.exp_count <= 0:
+	if Global.current_exp_count <= 0:
 		sword_upgrade_button.disabled = true
 		axe_upgrade_button.disabled = true
 		spear_upgrade_button.disabled = true
 		health_upgrade_button.disabled = true
+		continue_button.disabled = false
 
 func _on_continue_button_pressed():
 	SceneTransition.change_scene("res://Scenes/Levels/level_1.tscn")
