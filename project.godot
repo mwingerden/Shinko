@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalManager="*res://Scripts/SignalManager.gd"
 Global="*res://Scripts/Global.gd"
+SceneTransition="*res://Scenes/Utility/scene_transition.tscn"
 
 [display]
 

@@ -53,5 +53,4 @@ func check_exp():
 		health_upgrade_button.disabled = true
 
 func _on_continue_button_pressed():
-	#Switch Scene to First Level.
-	pass # Replace with function body.
+	SceneTransition.change_scene("res://Scenes/Levels/level_1.tscn")

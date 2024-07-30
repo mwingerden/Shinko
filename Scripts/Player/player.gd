@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var health_progress_bar = $Health
 @onready var shield_progress_bar = $Shield
 @onready var animation_player = $AnimationPlayer
-@export var MAX_HEALTH = 20
+@export var MAX_HEALTH = 1
 @export var MAX_SHIELD = 10
 @export var heal_amount = 1
 @export var increase_shield_amount = 1
@@ -73,8 +73,8 @@ func take_damage(value):
 	else:
 		current_health -= value
 	
-#func get_current_weapon():
-	#return current_weapon
+	if current_health <= 0:
+		SignalManager.player_death.emit()
 	
 func increase_shield():
 	if current_shield <= MAX_SHIELD:

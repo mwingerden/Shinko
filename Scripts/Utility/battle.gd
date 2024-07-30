@@ -24,6 +24,7 @@ func _ready():
 	enemies[0]._select()
 	#player = get_child(0)
 	show_actions_menu(true)
+	SignalManager.player_death.connect(player_death)
 	
 @warning_ignore("unused_parameter")
 func _process(delta):
@@ -61,6 +62,7 @@ func _on_attack_pressed():
 			enemies[i].take_damage(damage)
 			if enemies[i].get_current_health() <= 0:
 				#Play Death Animation Here
+				SignalManager.exp_add.emit()
 				spawn_potion(enemies[i].global_position)
 				enemies[i].queue_free()
 				enemies.remove_at(i)
@@ -94,6 +96,9 @@ func enemies_turn():
 		potion_spawn = false
 	disable_buttons(false)
 
+func player_death():
+	SceneTransition.change_scene("res://Scenes/Utility/upgrade.tscn")
+
 func spawn_potion(pos):
 	var rand_drop = rng.randi_range(1, 100)
 	if rand_drop <= 70:
@@ -115,7 +120,6 @@ func collect_potion():
 		Global.shield_potion_count += 1
 	#play despawn animation
 	potion.queue_free()
-	await get_tree().create_timer(.5).timeout
 
 func show_actions_menu(value):
 	actions_menu.visible = value
