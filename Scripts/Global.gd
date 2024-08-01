@@ -9,6 +9,7 @@ enum weapon {SWORD, AXE, SPEAR}
 var level_sword = 1
 var level_axe = 1
 var level_spear = 1
+var level_health = 0
 var MAX_PLAYER_HEALTH = 10
 var MAX_PLAYER_SHIELD = 10
 var heal_amount = 1
@@ -37,7 +38,7 @@ func upgrade_spear():
 	level_spear += 1
 	
 func upgrade_health():
-	level_sword += 1
+	level_health += 1
 	
 func exp_add():
 	current_exp_count += 1

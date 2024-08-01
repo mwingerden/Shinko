@@ -19,7 +19,8 @@ func _process(delta):
 	_play_animation()
 
 func player_restart():
-	Global.player_current_health = Global.MAX_PLAYER_HEALTH
+	Global.player_current_health = Global.MAX_PLAYER_HEALTH + Global.level_health
+	print(Global.player_current_health)
 	Global.player_current_shield = 0
 	Global.current_exp_count = Global.starting_exp
 	_update_health_bar()

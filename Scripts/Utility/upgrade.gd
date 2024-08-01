@@ -31,7 +31,7 @@ func _on_spear_upgrade_button_pressed():
 	check_exp()
 
 func _on_health_upgrade_pressed():
-	SignalManager.upgrade_sword.emit()
+	SignalManager.upgrade_health.emit()
 	SignalManager.exp_sub.emit()
 	set_text()
 	check_exp()
@@ -40,7 +40,7 @@ func set_text():
 	sword_upgrade_button.text = "Sword Lvl. " + str(Global.level_sword)
 	axe_upgrade_button.text = "Axe Lvl. " + str(Global.level_axe)
 	spear_upgrade_button.text = "Spear Lvl. " + str(Global.level_spear)
-	health_upgrade_button.text = "Health Lvl. " + str(Global.level_sword)
+	health_upgrade_button.text = "Health Lvl. " + str(Global.level_health)
 	Exp.text = "Exp: " + str(Global.current_exp_count)
 	
 func check_exp():
