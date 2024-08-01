@@ -60,9 +60,9 @@ func _play_animation():
 
 func take_damage(value):
 	if Global.shield_on:
-		Global.current_shield -= float(value) / 2.0
-		if Global.current_shield <= 0:
-			Global.current_shield = 0
+		Global.player_current_shield -= float(value) / 2.0
+		if Global.player_current_shield <= 0:
+			Global.player_current_shield = 0
 			show_health_bar(true)
 	else:
 		Global.player_current_health -= value
@@ -71,12 +71,12 @@ func take_damage(value):
 		SignalManager.player_death.emit()
 	
 func increase_shield():
-	if Global.current_shield <= Global.MAX_PLAYER_SHIELD:
-		Global.current_shield += Global.increase_shield_amount
+	if Global.player_current_shield <= Global.MAX_PLAYER_SHIELD:
+		Global.player_current_shield += Global.increase_shield_amount
 	show_health_bar(false)
 	_update_shield_bar()
 	
 func heal():
-	if Global.current_health <= Global.MAX_PLAYER_HEALTH:
-		Global.current_health += Global.heal_amount
+	if Global.player_current_health <= Global.MAX_PLAYER_HEALTH:
+		Global.player_current_health += Global.heal_amount
 		_update_health_bar()

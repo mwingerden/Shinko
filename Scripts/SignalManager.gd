@@ -12,3 +12,4 @@ signal upgrade_health
 signal exp_add
 signal exp_sub
 signal player_restart
+signal age_up

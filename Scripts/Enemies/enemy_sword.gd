@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var progress_bar = $Health
 @onready var animation_player = $AnimationPlayer
 var selected = false
-var weapon = "sword"
+var weapon = Global.weapon.SWORD
 
 @export var MAX_HEALTH = 2
 var current_health = MAX_HEALTH:

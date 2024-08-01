@@ -9,21 +9,14 @@ enum weapon {SWORD, AXE, SPEAR}
 var level_sword = 1
 var level_axe = 1
 var level_spear = 1
-var MAX_PLAYER_HEALTH = 1
+var MAX_PLAYER_HEALTH = 10
 var MAX_PLAYER_SHIELD = 10
 var heal_amount = 1
 var increase_shield_amount = 1
 var shield_on = false
+var player_age = 10
 var player_current_health = MAX_PLAYER_HEALTH
-	#set(value):
-		#current_health = value
-		#_update_health_bar()
-		#_play_animation()
 var player_current_shield = 0
-	#set(value):
-		#current_shield = value
-		#_update_shield_bar()
-		#_play_animation()
 
 func _ready():
 	SignalManager.upgrade_sword.connect(upgrade_sword)
@@ -32,6 +25,7 @@ func _ready():
 	SignalManager.upgrade_health.connect(upgrade_health)
 	SignalManager.exp_add.connect(exp_add)
 	SignalManager.exp_sub.connect(exp_sub)
+	SignalManager.age_up.connect(age_up)
 	
 func upgrade_sword():
 	level_sword += 1
@@ -50,3 +44,7 @@ func exp_add():
 	
 func exp_sub():
 	current_exp_count -= 1
+	
+func age_up():
+	player_age += 1
+	print("Player is not age: " + str(player_age))
