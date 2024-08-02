@@ -52,4 +52,4 @@ func check_exp():
 		continue_button.disabled = false
 
 func _on_continue_button_pressed():
-	SceneTransition.change_scene("res://Scenes/Levels/level_1.tscn")
+	SceneTransition.change_scene_restart()

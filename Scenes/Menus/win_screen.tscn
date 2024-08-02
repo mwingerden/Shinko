@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh136rg0ryn47"]
+
+[ext_resource type="Script" path="res://Scripts/Utility/win_screen.gd" id="1_3dejw"]
+
+[node name="WinScreen" type="Node2D"]
+script = ExtResource("1_3dejw")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 265.0
+offset_top = 129.0
+offset_right = 493.0
+offset_bottom = 210.0
+text = "End Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
