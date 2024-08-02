@@ -2,7 +2,6 @@ extends Node2D
 
 var rng = RandomNumberGenerator.new()
 var enemies = []
-var player = null
 var action_queue = []
 var is_battling = false
 var index = 0
@@ -13,8 +12,6 @@ var damage
 var potion
 var defend = false
 var potion_spawn = false
-var health_potion_count = 1
-var shield_potion_count = 1
 @onready var actions_menu = $"../Actions"
 @onready var item_menu = $"../Items"
 var health_potion = preload("res://Scenes/Utility/potion_health.tscn")
@@ -23,13 +20,16 @@ var shield_potion = preload("res://Scenes/Utility/potion_shield.tscn")
 @onready var health_potion_button = $"../Items/Panel/HBoxContainer/Health"
 
 func _ready():
+	if str(get_path()) == "/root/Level1/Battle":
+		SignalManager.player_restart.emit()
 	enemies = find_children("Enemy*")
 	enemies[0]._select()
-	player = get_child(0)
+	#player = get_child(0)
 	show_actions_menu(true)
+	SignalManager.player_death.connect(player_death)
 	
 @warning_ignore("unused_parameter")
-func _process(delta):	
+func _process(delta):
 	if !enemy_turn and Input.is_action_just_pressed("ui_up"):
 		if index > 0:
 			index -= 1
@@ -43,27 +43,63 @@ func _process(delta):
 		await get_tree().create_timer(.5).timeout
 		get_tree().quit()
 	
-	health_potion_button.set_text(str(health_potion_count)+ " Health Potions")
-	shield_potion_button.set_text(str(shield_potion_count) + " Shield Potions")
+	health_potion_button.set_text(str(Global.health_potion_count)+ " Health Potions")
+	shield_potion_button.set_text(str(Global.shield_potion_count) + " Shield Potions")
 
 func switch_focus(x,y):
 	enemies[x]._select()
 	enemies[y]._unselect()
 
+func check_weapon(player, weapon1, weapon2):
+	damage = 1.0
+	if player:
+		if weapon1 == Global.weapon.SWORD:
+			damage = Global.level_sword
+		elif weapon1 == Global.weapon.AXE:
+			damage = Global.level_axe
+		elif weapon1 == Global.weapon.SPEAR:
+			damage = Global.level_spear
+	
+	if weapon1 == Global.weapon.SWORD:
+		if weapon2 == Global.weapon.AXE:
+			damage *= 1.2
+		elif weapon2 == Global.weapon.SPEAR:
+			damage *= .8
+	elif weapon1 == Global.weapon.AXE:
+		if weapon2 == Global.weapon.SPEAR:
+			damage *= 1.2
+		elif weapon2 == Global.weapon.SWORD:
+			damage *= .8
+	if weapon1 == Global.weapon.SPEAR:
+		if weapon2 == Global.weapon.SWORD:
+			damage *= 1.2
+		elif weapon2 == Global.weapon.AXE:
+			damage *= .8
+	
+	return damage
+
 func _on_attack_pressed():
 	disable_buttons(true)
 	for i in enemies.size():
 		if enemies[i].is_selected():
-			damage = 1
-			if enemies[i].get_weapon_type() == "axe" and player.current_weapon() == 0:
-				damage = damage * 2
-			elif enemies[i].get_weapon_type() == "spear" and player.current_weapon() == 1:
-				damage = damage * 2
-			elif enemies[i].get_weapon_type() == "sword" and player.current_weapon() == 2:
-				damage = damage * 2
+			damage = check_weapon(true, Global.player_current_weapon, enemies[i].get_weapon_type())
+			#damage = 1.0
+			#if enemies[i].get_weapon_type() == "axe" and Global.player_current_weapon == Global.weapon.SWORD:
+				#damage = Global.level_sword * 1.2
+			#elif enemies[i].get_weapon_type() == "spear" and Global.player_current_weapon == Global.weapon.AXE:
+				#damage = Global.level_axe * 1.2
+			#elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == Global.weapon.SPEAR:
+				#damage = Global.level_spear * 1.2
+			#elif enemies[i].get_weapon_type() == "axe" and Global.player_current_weapon == Global.weapon.SPEAR:
+				#damage = Global.level_sword * .8
+			#elif enemies[i].get_weapon_type() == "spear" and Global.player_current_weapon == Global.weapon.SWORD:
+				#damage = Global.level_axe * .8
+			#elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == Global.weapon.AXE:
+				#damage = Global.level_spear * .8
 			enemies[i].take_damage(damage)
 			if enemies[i].get_current_health() <= 0:
 				#Play Death Animation Here
+				SignalManager.exp_add.emit(enemies[i].exp_drop())
 				spawn_potion(enemies[i].global_position)
 				enemies[i].queue_free()
 				enemies.remove_at(i)
@@ -81,13 +117,23 @@ func enemies_turn():
 		#Perform Attck Animation
 		damage = 1
 		if !defend:
-			if enemies[i].get_weapon_type() == "axe" and player.current_weapon() == 2:
-				damage = damage * 2
-			elif enemies[i].get_weapon_type() == "spear" and player.current_weapon() == 0:
-				damage = damage * 2
-			elif enemies[i].get_weapon_type() == "sword" and player.current_weapon() == 1:
-				damage = damage * 2
-			player.take_damage(damage)
+			damage = check_weapon(false, enemies[i].get_weapon_type(), Global.player_current_weapon)
+			#if enemies[i].get_weapon_type() == "axe" and Global.player_current_weapon == Global.weapon.SPEAR:
+				#damage = Global.level_sword * 1.2
+			#elif enemies[i].get_weapon_type() == "spear" and Global.player_current_weapon == Global.weapon.SWORD:
+				#damage = Global.level_axe * 1.2
+			#elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == Global.weapon.AXE:
+				#damage = Global.level_spear * 1.2
+			#elif enemies[i].get_weapon_type() == "axe" and Global.player_current_weapon == Global.weapon.SWORD:
+				#damage = Global.level_sword * .8
+			#elif enemies[i].get_weapon_type() == "spear" and Global.player_current_weapon == Global.weapon.AXE:
+				#damage = Global.level_axe * .8
+			#elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == Global.weapon.SPEAR:
+				#damage = Global.level_spear * .8
+				
+			SignalManager.player_take_damage.emit(damage)
+		if Global.player_current_health <= 0:
+			return
 		await get_tree().create_timer(.5).timeout
 	enemy_turn = false
 	defend = false
@@ -96,9 +142,14 @@ func enemies_turn():
 		potion_spawn = false
 	disable_buttons(false)
 
+func player_death():
+	#disable_buttons(true)
+	SignalManager.age_up.emit()
+	SceneTransition.change_scene("res://Scenes/Utility/upgrade.tscn")
+
 func spawn_potion(pos):
 	var rand_drop = rng.randi_range(1, 100)
-	if rand_drop <= 70:
+	if rand_drop <= 99:
 		var rand_potion = rng.randi_range(0, 1)
 		if rand_potion:
 			potion = health_potion.instantiate()
@@ -112,19 +163,18 @@ func spawn_potion(pos):
 
 func collect_potion():
 	if potion.name == "PotionHealth":
-		health_potion_count += 1
+		Global.health_potion_count += 1
 	elif potion.name == "PotionShield":
-		shield_potion_count += 1
+		Global.shield_potion_count += 1
 	#play despawn animation
 	potion.queue_free()
-	await get_tree().create_timer(.5).timeout
 
 func show_actions_menu(value):
 	actions_menu.visible = value
 	item_menu.visible = !value
 	
 func _on_swap_weapon_pressed():
-	player.swap_weapon()
+	SignalManager.weapon_swap.emit()
 	enemies_turn()
 	
 func disable_buttons(value):
@@ -145,17 +195,19 @@ func _on_back_pressed():
 	show_actions_menu(true)
 
 func _on_shield_pressed():
-	if shield_potion_count > 0:
-		shield_potion_count -= 1
-		player.increase_shield()
+	if Global.shield_potion_count > 0:
+		Global.shield_potion_count -= 1
+		#player.increase_shield()
+		SignalManager.player_increase_shield.emit()
 		show_actions_menu(true)
 		await get_tree().create_timer(.5).timeout
 		enemies_turn()
 
 func _on_health_pressed():
-	if health_potion_count > 0:
-		health_potion_count -= 1
-		player.heal()
+	if Global.health_potion_count > 0:
+		Global.health_potion_count -= 1
+		#player.heal()
+		SignalManager.player_increase_health.emit()
 		show_actions_menu(true)
 		await get_tree().create_timer(.5).timeout
 		enemies_turn()

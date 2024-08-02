@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjvru2lw8xxn"]
+
+[ext_resource type="Script" path="res://Scripts/Utility/upgrade.gd" id="1_wimt5"]
+
+[node name="Upgrade" type="Node2D"]
+script = ExtResource("1_wimt5")
+
+[node name="SwordUpgradeButton" type="Button" parent="."]
+offset_left = 44.0
+offset_top = 36.0
+offset_right = 443.0
+offset_bottom = 147.0
+theme_override_font_sizes/font_size = 50
+text = "Sword Lvl. 0"
+
+[node name="AxeUpgradeButton" type="Button" parent="."]
+offset_left = 83.0
+offset_top = 199.0
+offset_right = 482.0
+offset_bottom = 310.0
+theme_override_font_sizes/font_size = 50
+text = "Axe Lvl. 0"
+
+[node name="SpearUpgradeButton" type="Button" parent="."]
+offset_left = 508.0
+offset_top = 78.0
+offset_right = 907.0
+offset_bottom = 189.0
+theme_override_font_sizes/font_size = 50
+text = "Spear Lvl. 0"
+
+[node name="HealthUpgradeButton" type="Button" parent="."]
+offset_left = 535.0
+offset_top = 245.0
+offset_right = 934.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 50
+text = "Sword Lvl. 0"
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 313.0
+offset_top = 434.0
+offset_right = 621.0
+offset_bottom = 542.0
+theme_override_font_sizes/font_size = 50
+text = "Continue"
+
+[node name="Exp" type="Label" parent="."]
+offset_left = 1418.0
+offset_top = 1.0
+offset_right = 1597.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 50
+text = "Exp: 0"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[connection signal="pressed" from="SwordUpgradeButton" to="." method="_on_sword_upgrade_pressed"]
+[connection signal="pressed" from="AxeUpgradeButton" to="." method="_on_axe_upgrade_button_pressed"]
+[connection signal="pressed" from="SpearUpgradeButton" to="." method="_on_spear_upgrade_button_pressed"]
+[connection signal="pressed" from="HealthUpgradeButton" to="." method="_on_health_upgrade_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
