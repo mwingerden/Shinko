@@ -203,6 +203,7 @@ func _on_shield_pressed():
 		#player.increase_shield()
 		SignalManager.player_increase_shield.emit()
 		show_actions_menu(true)
+		disable_buttons(true)
 		await get_tree().create_timer(.5).timeout
 		enemies_turn()
 
@@ -212,5 +213,6 @@ func _on_health_pressed():
 		#player.heal()
 		SignalManager.player_increase_health.emit()
 		show_actions_menu(true)
+		disable_buttons(true)
 		await get_tree().create_timer(.5).timeout
 		enemies_turn()
