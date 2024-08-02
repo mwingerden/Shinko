@@ -11,18 +11,16 @@ func _ready():
 	SignalManager.player_take_damage.connect(take_damage)
 	SignalManager.player_increase_health.connect(heal)
 	SignalManager.player_increase_shield.connect(increase_shield)
-	SignalManager.player_restart.connect(player_restart)
+	SignalManager.update_player_bars.connect(update_player_bars)
 	show_health_bar(true)
+	_update_health_bar()
+	_update_shield_bar()
 
 @warning_ignore("unused_parameter")
 func _process(delta):
 	_play_animation()
 
-func player_restart():
-	Global.player_current_health = Global.MAX_PLAYER_HEALTH + Global.level_health
-	print(Global.player_current_health)
-	Global.player_current_shield = 0
-	Global.current_exp_count = Global.starting_exp
+func update_player_bars():
 	_update_health_bar()
 	_update_shield_bar()
 

@@ -27,6 +27,7 @@ func _ready():
 	SignalManager.exp_add.connect(exp_add)
 	SignalManager.exp_sub.connect(exp_sub)
 	SignalManager.age_up.connect(age_up)
+	SignalManager.player_restart.connect(player_restart)
 	
 func upgrade_sword():
 	level_sword += 1
@@ -49,3 +50,9 @@ func exp_sub():
 func age_up():
 	player_age += 1
 	print("Player is not age: " + str(player_age))
+
+func player_restart():
+	Global.player_current_health = Global.MAX_PLAYER_HEALTH + Global.level_health
+	#print(Global.player_current_health)
+	Global.player_current_shield = 0
+	Global.current_exp_count = Global.starting_exp

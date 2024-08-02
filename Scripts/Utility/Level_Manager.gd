@@ -8,11 +8,11 @@ func _ready():
 	#print(level_count)
 
 func next_level(current_level):
-	var next_level = current_level.to_int() + 1
-	if next_level > level_count:
+	var level = current_level.to_int() + 1
+	if level > level_count:
 		SceneTransition.change_scene("res://Scenes/Menus/win_screen.tscn")
 	else:
-		SceneTransition.change_scene(FILE_PATH + str(next_level) + ".tscn")
+		SceneTransition.change_scene(FILE_PATH + str(level) + ".tscn")
 
 func dir_contents(path):
 	var count = 0

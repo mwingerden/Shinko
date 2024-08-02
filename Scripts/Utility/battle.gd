@@ -21,6 +21,7 @@ var shield_potion = preload("res://Scenes/Items/potion_shield.tscn")
 func _ready():
 	if str(get_path()) == "/root/Level1/Battle":
 		SignalManager.player_restart.emit()
+		SignalManager.update_player_bars.emit()
 	enemies = find_children("Enemy*")
 	enemies[0]._select()
 	#player = get_child(0)
