@@ -99,7 +99,7 @@ func _on_attack_pressed():
 			enemies[i].take_damage(damage)
 			if enemies[i].get_current_health() <= 0:
 				#Play Death Animation Here
-				SignalManager.exp_add.emit()
+				SignalManager.exp_add.emit(enemies[i].exp_drop())
 				spawn_potion(enemies[i].global_position)
 				enemies[i].queue_free()
 				enemies.remove_at(i)

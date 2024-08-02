@@ -7,11 +7,15 @@ var selected = false
 var weapon = Global.weapon.SPEAR
 
 @export var MAX_HEALTH = 2
+@export var EXP_DROP = 1
 var current_health = MAX_HEALTH:
 	set(value):
 		current_health = value
 		_update_progress_bar()
 		_play_animation()
+		
+func _ready():
+	current_health = MAX_HEALTH
 		
 func _update_progress_bar():
 	progress_bar.value = (float(current_health) / MAX_HEALTH) * 100

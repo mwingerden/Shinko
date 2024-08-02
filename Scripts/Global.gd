@@ -40,8 +40,8 @@ func upgrade_spear():
 func upgrade_health():
 	level_health += 1
 	
-func exp_add():
-	current_exp_count += 1
+func exp_add(value):
+	current_exp_count += value
 	
 func exp_sub():
 	current_exp_count -= 1

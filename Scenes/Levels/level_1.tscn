@@ -135,6 +135,10 @@ position = Vector2(403, 360)
 position = Vector2(1119, 189)
 script = null
 
+[node name="EnemyAxe" parent="Battle/GroupEnemy1" index="0"]
+MAX_HEALTH = 3
+EXP_DROP = 9
+
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Attack" to="Battle" method="_on_attack_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Swap Weapon" to="Battle" method="_on_swap_weapon_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Defend" to="Battle" method="_on_defend_pressed"]
@@ -142,3 +146,5 @@ script = null
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Health" to="Battle" method="_on_health_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Shield" to="Battle" method="_on_shield_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Back" to="Battle" method="_on_back_pressed"]
+
+[editable path="Battle/GroupEnemy1"]
