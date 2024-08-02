@@ -42,3 +42,6 @@ func get_current_health():
 
 func get_weapon_type():
 	return weapon
+	
+func exp_drop():
+	return EXP_DROP

@@ -1,16 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://duk36yggkeau6"]
+[gd_scene load_steps=6 format=3 uid="uid://4g42u8fdrgrg"]
 
-[ext_resource type="PackedScene" uid="uid://bbehuimg23t2u" path="res://Scenes/Utility/group_enemy_1.tscn" id="1_jtqnb"]
-[ext_resource type="Script" path="res://Scripts/Utility/battle.gd" id="1_n7xxg"]
-[ext_resource type="PackedScene" uid="uid://xph3348axmlc" path="res://Scenes/Player/player.tscn" id="3_xpy4m"]
+[ext_resource type="Script" path="res://Scripts/Utility/battle.gd" id="1_g8wpy"]
+[ext_resource type="PackedScene" uid="uid://xph3348axmlc" path="res://Scenes/Player/player.tscn" id="2_s0ygd"]
+[ext_resource type="PackedScene" uid="uid://d2vvgiwe7naf3" path="res://Scenes/Utility/group_enemy_2.tscn" id="3_fb5u6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bpa1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcqgi"]
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubs5f"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g8wx"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="Level1" type="Node2D"]
+[node name="Level2" type="Node2D"]
 
 [node name="Actions" type="Control" parent="."]
 layout_mode = 3
@@ -28,7 +28,7 @@ offset_top = -159.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_5bpa1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qcqgi")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Actions/Panel"]
 layout_mode = 1
@@ -48,7 +48,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-theme_override_styles/hover = SubResource("StyleBoxFlat_ubs5f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1g8wx")
 text = "Attack
 "
 
@@ -90,7 +90,7 @@ offset_top = -159.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_5bpa1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qcqgi")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Items/Panel"]
 layout_mode = 1
@@ -110,7 +110,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-theme_override_styles/hover = SubResource("StyleBoxFlat_ubs5f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1g8wx")
 text = "Health"
 
 [node name="Shield" type="Button" parent="Items/Panel/HBoxContainer"]
@@ -126,14 +126,18 @@ theme_override_font_sizes/font_size = 50
 text = "Back"
 
 [node name="Battle" type="Node2D" parent="."]
-script = ExtResource("1_n7xxg")
+script = ExtResource("1_g8wpy")
 
-[node name="Player" parent="Battle" instance=ExtResource("3_xpy4m")]
+[node name="Player" parent="Battle" instance=ExtResource("2_s0ygd")]
 position = Vector2(403, 360)
 
-[node name="GroupEnemy1" parent="Battle" instance=ExtResource("1_jtqnb")]
-position = Vector2(1119, 189)
-script = null
+[node name="Group Enemy 2" parent="Battle" instance=ExtResource("3_fb5u6")]
+
+[node name="EnemyAxe" parent="Battle/Group Enemy 2" index="0"]
+position = Vector2(1034, 258)
+
+[node name="EnemyAxe2" parent="Battle/Group Enemy 2" index="1"]
+position = Vector2(1255, 527)
 
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Attack" to="Battle" method="_on_attack_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Swap Weapon" to="Battle" method="_on_swap_weapon_pressed"]
@@ -143,4 +147,4 @@ script = null
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Shield" to="Battle" method="_on_shield_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Back" to="Battle" method="_on_back_pressed"]
 
-[editable path="Battle/GroupEnemy1"]
+[editable path="Battle/Group Enemy 2"]
