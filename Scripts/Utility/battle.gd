@@ -38,7 +38,7 @@ func _process(delta):
 		if index < enemies.size() - 1:
 			index += 1
 			switch_focus(index, index - 1)
-			#
+			
 	#if enemies.size() <= 0:
 		#await get_tree().create_timer(1).timeout
 		#LevelManager.next_level(get_tree().current_scene.scene_file_path)
@@ -59,22 +59,18 @@ func check_weapon(player, weapon1, weapon2):
 			damage = Global.level_axe
 		elif weapon1 == Global.weapon.SPEAR:
 			damage = Global.level_spear
+	else:
+		damage = Global.enemy_damage
 	
 	if weapon1 == Global.weapon.SWORD:
 		if weapon2 == Global.weapon.AXE:
-			damage *= 1.2
-		else:
-			damage *= .2
+			damage += 1
 	elif weapon1 == Global.weapon.AXE:
 		if weapon2 == Global.weapon.SPEAR:
-			damage *= 1.2
-		else:
-			damage *= .2
+			damage += 1
 	elif weapon1 == Global.weapon.SPEAR:
 		if weapon2 == Global.weapon.SWORD:
-			damage *= 1.2
-		else:
-			damage *= .2
+			damage += 1
 	
 	return damage
 
@@ -82,20 +78,6 @@ func _on_attack_pressed():
 	disable_buttons(true)
 	for i in enemies.size():
 		if enemies[i].is_selected():
-			#damage = check_weapon(true, Global.player_current_weapon, enemies[i].get_weapon_type())
-			#damage = 1.0
-			#if enemies[i].get_weapon_type() == "axe" and Global.player_current_weapon == Global.weapon.SWORD:
-				#damage = Global.level_sword * 1.2
-			#elif enemies[i].get_weapon_type() == "spear" and Global.player_current_weapon == Global.weapon.AXE:
-				#damage = Global.level_axe * 1.2
-			#elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == Global.weapon.SPEAR:
-				#damage = Global.level_spear * 1.2
-			#elif enemies[i].get_weapon_type() == "axe" and Global.player_current_weapon == Global.weapon.SPEAR:
-				#damage = Global.level_sword * .8
-			#elif enemies[i].get_weapon_type() == "spear" and Global.player_current_weapon == Global.weapon.SWORD:
-				#damage = Global.level_axe * .8
-			#elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == Global.weapon.AXE:
-				#damage = Global.level_spear * .8
 			enemies[i].take_damage(check_weapon(true, Global.player_current_weapon, enemies[i].get_weapon_type()))
 			if enemies[i].get_current_health() <= 0:
 				#Play Death Animation Here
@@ -118,22 +100,7 @@ func enemies_turn():
 	enemy_turn = true
 	for i in enemies.size():
 		#Perform Attck Animation
-		#damage = 1
 		if !defend:
-			#damage = check_weapon(false, enemies[i].get_weapon_type(), Global.player_current_weapon)
-			#if enemies[i].get_weapon_type() == "axe" and Global.player_current_weapon == Global.weapon.SPEAR:
-				#damage = Global.level_sword * 1.2
-			#elif enemies[i].get_weapon_type() == "spear" and Global.player_current_weapon == Global.weapon.SWORD:
-				#damage = Global.level_axe * 1.2
-			#elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == Global.weapon.AXE:
-				#damage = Global.level_spear * 1.2
-			#elif enemies[i].get_weapon_type() == "axe" and Global.player_current_weapon == Global.weapon.SWORD:
-				#damage = Global.level_sword * .8
-			#elif enemies[i].get_weapon_type() == "spear" and Global.player_current_weapon == Global.weapon.AXE:
-				#damage = Global.level_axe * .8
-			#elif enemies[i].get_weapon_type() == "sword" and Global.player_current_weapon == Global.weapon.SPEAR:
-				#damage = Global.level_spear * .8
-				
 			SignalManager.player_take_damage.emit(check_weapon(false, enemies[i].get_weapon_type(), Global.player_current_weapon))
 		if Global.player_current_health <= 0:
 			return

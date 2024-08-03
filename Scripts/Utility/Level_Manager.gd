@@ -9,6 +9,7 @@ func _ready():
 
 func next_level(current_level):
 	var level = current_level.to_int() + 1
+	Global.enemy_damage += level
 	if level > level_count:
 		SceneTransition.change_scene("res://Scenes/Menus/win_screen.tscn")
 	else:

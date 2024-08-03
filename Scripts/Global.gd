@@ -18,6 +18,8 @@ var shield_on = false
 var player_age = 10
 var player_current_health = MAX_PLAYER_HEALTH
 var player_current_shield = 0
+var STARTING_ENEMY_DAMAGE = 1
+var enemy_damage = STARTING_ENEMY_DAMAGE
 
 func _ready():
 	SignalManager.upgrade_sword.connect(upgrade_sword)
@@ -56,3 +58,4 @@ func player_restart():
 	#print(Global.player_current_health)
 	Global.player_current_shield = 0
 	Global.current_exp_count = Global.starting_exp
+	enemy_damage = STARTING_ENEMY_DAMAGE
