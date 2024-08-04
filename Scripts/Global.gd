@@ -51,7 +51,7 @@ func exp_sub():
 	
 func age_up():
 	player_age += 1
-	print("Player is not age: " + str(player_age))
+	#print("Player is age: " + str(player_age))
 
 func player_restart():
 	Global.player_current_health = Global.MAX_PLAYER_HEALTH + Global.level_health
