@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://nx0sy38a8w55"
+path="res://.godot/imported/transition-coat-121423.mp3-3dc9f0880ca02d04fcf55d9d0a303ba9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/transition-coat-121423.mp3"
+dest_files=["res://.godot/imported/transition-coat-121423.mp3-3dc9f0880ca02d04fcf55d9d0a303ba9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

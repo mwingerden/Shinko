@@ -97,7 +97,6 @@ libraries = {
 shape = SubResource("RectangleShape2D_hyda8")
 
 [node name="Health" type="ProgressBar" parent="."]
-visible = false
 offset_left = -86.0
 offset_top = -140.0
 offset_right = 82.0
@@ -105,6 +104,7 @@ offset_bottom = -113.0
 value = 100.0
 
 [node name="Shield" type="ProgressBar" parent="."]
+visible = false
 offset_left = -86.0
 offset_top = -140.0
 offset_right = 82.0

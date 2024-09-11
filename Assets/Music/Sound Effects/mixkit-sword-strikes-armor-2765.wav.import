@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cug02i48mu3h7"
+path="res://.godot/imported/mixkit-sword-strikes-armor-2765.wav-506bfdcfca9e72ff58679692242f21c2.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/mixkit-sword-strikes-armor-2765.wav"
+dest_files=["res://.godot/imported/mixkit-sword-strikes-armor-2765.wav-506bfdcfca9e72ff58679692242f21c2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

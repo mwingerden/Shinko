@@ -142,3 +142,5 @@ script = null
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Health" to="Battle" method="_on_health_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Shield" to="Battle" method="_on_shield_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Back" to="Battle" method="_on_back_pressed"]
+
+[editable path="Battle/GroupEnemy1"]
