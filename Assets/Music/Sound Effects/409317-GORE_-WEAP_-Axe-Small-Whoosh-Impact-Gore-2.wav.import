@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cs8gaedmh7alv"
+path="res://.godot/imported/409317-GORE_-WEAP_-Axe-Small-Whoosh-Impact-Gore-2.wav-970a67c1a77c0e6cfe60415acc50ac13.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/409317-GORE_-WEAP_-Axe-Small-Whoosh-Impact-Gore-2.wav"
+dest_files=["res://.godot/imported/409317-GORE_-WEAP_-Axe-Small-Whoosh-Impact-Gore-2.wav-970a67c1a77c0e6cfe60415acc50ac13.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

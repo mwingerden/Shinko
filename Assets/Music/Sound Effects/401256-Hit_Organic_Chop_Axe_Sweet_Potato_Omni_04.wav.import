@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ojwvafu6ljh1"
+path="res://.godot/imported/401256-Hit_Organic_Chop_Axe_Sweet_Potato_Omni_04.wav-cfe45091fce89cfd55e483f413dd170f.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/401256-Hit_Organic_Chop_Axe_Sweet_Potato_Omni_04.wav"
+dest_files=["res://.godot/imported/401256-Hit_Organic_Chop_Axe_Sweet_Potato_Omni_04.wav-cfe45091fce89cfd55e483f413dd170f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

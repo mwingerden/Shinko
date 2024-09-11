@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cqfcdft0fmjct"
+path="res://.godot/imported/mixkit-sword-pierces-armor-2761.wav-953121947c39cd98238afd323d2948ed.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/mixkit-sword-pierces-armor-2761.wav"
+dest_files=["res://.godot/imported/mixkit-sword-pierces-armor-2761.wav-953121947c39cd98238afd323d2948ed.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

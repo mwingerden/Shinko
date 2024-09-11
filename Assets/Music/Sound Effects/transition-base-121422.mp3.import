@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cv227ndyetsxp"
+path="res://.godot/imported/transition-base-121422.mp3-e961fde3a4fdbce5de673974af62c4ee.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/transition-base-121422.mp3"
+dest_files=["res://.godot/imported/transition-base-121422.mp3-e961fde3a4fdbce5de673974af62c4ee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

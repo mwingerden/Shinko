@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://46k2481mewh"
+path="res://.godot/imported/mixkit-little-monster-laugh-412.wav-c1d5b827cf13db5409d58422eec9d303.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/mixkit-little-monster-laugh-412.wav"
+dest_files=["res://.godot/imported/mixkit-little-monster-laugh-412.wav-c1d5b827cf13db5409d58422eec9d303.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
