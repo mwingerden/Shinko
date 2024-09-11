@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbehuimg23t2u"]
+
+[ext_resource type="Script" path="res://Scripts/Utility/battle.gd" id="1_ujwlj"]
+[ext_resource type="PackedScene" uid="uid://ceoqfxrqkw12k" path="res://Scenes/Enemies/enemy_axe.tscn" id="2_0adsd"]
+[ext_resource type="PackedScene" uid="uid://cul21ipddiisb" path="res://Scenes/Enemies/enemy_spear.tscn" id="3_v7mxa"]
+[ext_resource type="PackedScene" uid="uid://dyyqli7iqtir6" path="res://Scenes/Enemies/enemy_sword.tscn" id="4_qy2qn"]
+
+[node name="GroupEnemy1" type="Node2D"]
+script = ExtResource("1_ujwlj")
+
+[node name="EnemyAxe" parent="." instance=ExtResource("2_0adsd")]
+
+[node name="EnemySpear" parent="." instance=ExtResource("3_v7mxa")]
+position = Vector2(142, 197)
+
+[node name="EnemySword" parent="." instance=ExtResource("4_qy2qn")]
+position = Vector2(-38, 412)
