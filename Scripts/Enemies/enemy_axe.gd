@@ -16,7 +16,10 @@ var current_health = MAX_HEALTH:
 		
 func _ready():
 	current_health = MAX_HEALTH
-		
+	
+func _process(delta):
+	animation_player.play("move")
+
 func _update_progress_bar():
 	progress_bar.value = (float(current_health) / MAX_HEALTH) * 100
 	
