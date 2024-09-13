@@ -1,9 +1,100 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjvru2lw8xxn"]
+[gd_scene load_steps=11 format=3 uid="uid://cjvru2lw8xxn"]
 
 [ext_resource type="Script" path="res://Scripts/Utility/upgrade.gd" id="1_wimt5"]
+[ext_resource type="Texture2D" uid="uid://qw5aqary6m1l" path="res://Assets/Sprites/Background/upgrade_background.png" id="2_d5os3"]
+[ext_resource type="Texture2D" uid="uid://c8o2ivwhmfk6e" path="res://Assets/Sprites/Background/upgrade_foreground.png" id="3_4xkp6"]
+
+[sub_resource type="Animation" id="Animation_3mbyh"]
+resource_name = "background"
+length = 1.96
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.56, 0.84, 1.12, 1.4, 1.68),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 2), Vector2i(0, 5), Vector2i(0, 4), Vector2i(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bqs1f"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_g34st"]
+resource_name = "stand_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxold"]
+_data = {
+"RESET": SubResource("Animation_bqs1f"),
+"background": SubResource("Animation_3mbyh"),
+"stand_up": SubResource("Animation_g34st")
+}
+
+[sub_resource type="Animation" id="Animation_v2dem"]
+resource_name = "stand_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_3n7o0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8w6v6"]
+_data = {
+"RESET": SubResource("Animation_3n7o0"),
+"stand_up": SubResource("Animation_v2dem")
+}
 
 [node name="Upgrade" type="Node2D"]
 script = ExtResource("1_wimt5")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(800, 450)
+texture = ExtResource("2_d5os3")
+vframes = 10
+
+[node name="Foreground" type="Sprite2D" parent="."]
+position = Vector2(800, 450)
+texture = ExtResource("3_4xkp6")
+vframes = 3
 
 [node name="SwordUpgradeButton" type="Button" parent="."]
 offset_left = 44.0
@@ -53,9 +144,16 @@ offset_bottom = 70.0
 theme_override_font_sizes/font_size = 50
 text = "Exp: 0"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Background_Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rxold")
+}
+autoplay = "stand_up"
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Foreground_Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8w6v6")
+}
 
 [connection signal="pressed" from="SwordUpgradeButton" to="." method="_on_sword_upgrade_pressed"]
 [connection signal="pressed" from="AxeUpgradeButton" to="." method="_on_axe_upgrade_button_pressed"]
