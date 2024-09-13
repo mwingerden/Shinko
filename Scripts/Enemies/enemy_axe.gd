@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @onready var selected_sprite = $Selected
 @onready var progress_bar = $Health
-@onready var animation_player = $AnimationPlayer
+@onready var enemy_animation_player = $Self_Animation
+@onready var selected_animation_player = $Selected_Animation
 var selected = false
 var weapon = Global.weapon.AXE
 
@@ -18,7 +19,8 @@ func _ready():
 	current_health = MAX_HEALTH
 	
 func _process(delta):
-	animation_player.play("move")
+	enemy_animation_player.play("move")
+	selected_animation_player.play("selected")
 
 func _update_progress_bar():
 	progress_bar.value = (float(current_health) / MAX_HEALTH) * 100

@@ -6,6 +6,21 @@
 [ext_resource type="Texture2D" uid="uid://ch8iqwe8dywst" path="res://Assets/Sprites/Background/background_final.png" id="1_st72s"]
 [ext_resource type="PackedScene" uid="uid://xph3348axmlc" path="res://Scenes/Player/player.tscn" id="3_xpy4m"]
 
+[sub_resource type="Animation" id="Animation_h64vn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ek5um"]
 resource_name = "background_final"
 length = 0.3
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)]
-}
-
-[sub_resource type="Animation" id="Animation_h64vn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o4ec8"]
@@ -204,3 +204,4 @@ position = Vector2(-240, 415)
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Back" to="Battle" method="_on_back_pressed"]
 
 [editable path="Battle/GroupEnemy1"]
+[editable path="Battle/GroupEnemy1/EnemyAxe"]
