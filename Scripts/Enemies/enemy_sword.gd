@@ -18,6 +18,7 @@ var current_health = MAX_HEALTH:
 func _ready():
 	current_health = MAX_HEALTH
 	
+@warning_ignore("unused_parameter")
 func _process(delta):
 	animation_player.play("move")
 	selected_animation_player.play("selected")

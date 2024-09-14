@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ceoqfxrqkw12k"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy_axe.gd" id="1_ynyri"]
-[ext_resource type="Texture2D" uid="uid://bgax3msu3hmqe" path="res://Assets/Sprites/Utility/Selected.png" id="2_uku2n"]
+[ext_resource type="Texture2D" uid="uid://bgax3msu3hmqe" path="res://Scripts/Utility/Selected.png" id="2_uku2n"]
 [ext_resource type="Texture2D" uid="uid://djekt6japru8o" path="res://Assets/Sprites/Enemies/EnemyAxe.png" id="3_57py8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q78wt"]
