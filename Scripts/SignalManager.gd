@@ -14,3 +14,4 @@ signal exp_sub
 signal player_restart
 signal age_up
 signal update_player_bars
+signal increase_age

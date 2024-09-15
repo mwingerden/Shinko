@@ -6,6 +6,8 @@ extends Node2D
 @onready var health_upgrade_button = $HealthUpgradeButton
 @onready var continue_button = $ContinueButton
 @onready var Exp = $Exp
+@onready var background_animation_player = $Background_Animation
+@onready var foreground_animation_player = $Foreground_Animation
 
 func _ready():
 	continue_button.disabled = true
@@ -17,6 +19,10 @@ func _on_sword_upgrade_pressed():
 	SignalManager.exp_sub.emit()
 	set_text()
 	check_exp()
+
+@warning_ignore("unused_parameter")
+func _process(delta):
+	background_animation_player.play("background")
 
 func _on_axe_upgrade_button_pressed():
 	SignalManager.upgrade_axe.emit()
@@ -52,4 +58,6 @@ func check_exp():
 		continue_button.disabled = false
 
 func _on_continue_button_pressed():
+	foreground_animation_player.play("stand_up")
+	await foreground_animation_player.animation_finished
 	SceneTransition.change_scene_restart()

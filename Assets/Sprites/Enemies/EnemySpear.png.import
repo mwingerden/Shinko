@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jexy8lc344j5"
-path="res://.godot/imported/Enemy Spear.png-98702bcd8fc33181055e8ce919750a0f.ctex"
+path="res://.godot/imported/EnemySpear.png-1a9a3897b2fad549bcf66524ce727e8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Enemies/Enemy Spear.png"
-dest_files=["res://.godot/imported/Enemy Spear.png-98702bcd8fc33181055e8ce919750a0f.ctex"]
+source_file="res://Assets/Sprites/Enemies/EnemySpear.png"
+dest_files=["res://.godot/imported/EnemySpear.png-1a9a3897b2fad549bcf66524ce727e8a.ctex"]
 
 [params]
 
