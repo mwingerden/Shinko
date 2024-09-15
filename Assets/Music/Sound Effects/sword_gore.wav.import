@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://nruqayybxp3v"
+path="res://.godot/imported/sword_gore.wav-bd853659ca8a0c2657a410c72a684fda.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/sword_gore.wav"
+dest_files=["res://.godot/imported/sword_gore.wav-bd853659ca8a0c2657a410c72a684fda.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

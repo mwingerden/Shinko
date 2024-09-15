@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://4g42u8fdrgrg"]
 
-[ext_resource type="Script" path="res://Scripts/Utility/battle.gd" id="1_g8wpy"]
+[ext_resource type="Script" path="res://Scripts/Levels/battle.gd" id="1_g8wpy"]
 [ext_resource type="PackedScene" uid="uid://xph3348axmlc" path="res://Scenes/Player/player.tscn" id="2_s0ygd"]
 [ext_resource type="PackedScene" uid="uid://d2vvgiwe7naf3" path="res://Scenes/Utility/group_enemy_2.tscn" id="3_fb5u6"]
 

@@ -65,9 +65,27 @@ func check_weapon(player, weapon1, weapon2):
 	if weapon1 == Global.weapon.SWORD:
 		if weapon2 == Global.weapon.AXE:
 			damage += 1
+			if player: 
+				AudioPlayer.play_FX(GlobalAudioSx.sword_crit_on_enemy)
+			else:
+				AudioPlayer.play_FX(GlobalAudioSx.sword_crit_on_player)
+			return damage
+		if player: 
+			AudioPlayer.play_FX(GlobalAudioSx.sword_hit_1)
+		else:
+			AudioPlayer.play_FX(GlobalAudioSx.sword_hit_2)
 	elif weapon1 == Global.weapon.AXE:
 		if weapon2 == Global.weapon.SPEAR:
 			damage += 1
+			if player: 
+				AudioPlayer.play_FX(GlobalAudioSx.axe_crit_on_enemy)
+			else:
+				AudioPlayer.play_FX(GlobalAudioSx.axe_crit_on_player)
+			return damage
+		if player: 
+			AudioPlayer.play_FX(GlobalAudioSx.sword_hit_1)
+		else:
+			AudioPlayer.play_FX(GlobalAudioSx.sword_hit_2)
 	elif weapon1 == Global.weapon.SPEAR:
 		if weapon2 == Global.weapon.SWORD:
 			damage += 1
