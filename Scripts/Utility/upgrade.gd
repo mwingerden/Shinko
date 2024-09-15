@@ -20,6 +20,7 @@ func _on_sword_upgrade_pressed():
 	set_text()
 	check_exp()
 
+@warning_ignore("unused_parameter")
 func _process(delta):
 	background_animation_player.play("background")
 

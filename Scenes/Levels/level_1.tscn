@@ -183,17 +183,20 @@ script = ExtResource("1_n7xxg")
 position = Vector2(274, 567)
 
 [node name="GroupEnemy1" parent="Battle" instance=ExtResource("1_jtqnb")]
-position = Vector2(1119, 189)
+position = Vector2(794, 453)
 script = null
 
 [node name="EnemyAxe" parent="Battle/GroupEnemy1" index="0"]
 position = Vector2(-471, 445)
 
+[node name="Sprite2D" parent="Battle/GroupEnemy1/EnemyAxe" index="1"]
+position = Vector2(753, -259)
+
 [node name="EnemySpear" parent="Battle/GroupEnemy1" index="1"]
-position = Vector2(5, 374)
+position = Vector2(183, -74)
 
 [node name="EnemySword" parent="Battle/GroupEnemy1" index="2"]
-position = Vector2(-240, 415)
+position = Vector2(41, 183)
 
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Attack" to="Battle" method="_on_attack_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Swap Weapon" to="Battle" method="_on_swap_weapon_pressed"]
