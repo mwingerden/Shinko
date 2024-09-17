@@ -1,8 +1,33 @@
 extends Node
 
-@onready var sword_crit_on_enemy = preload("res://Assets/Music/Sound Effects/sword_gore.wav")
-@onready var sword_crit_on_player = preload("res://Assets/Music/Sound Effects/sword_crit_hit.wav")
-@onready var sword_hit_1 = preload("res://Assets/Music/Sound Effects/sword_normal_hit_1.wav")
-@onready var sword_hit_2 = preload("res://Assets/Music/Sound Effects/sword_normal_hit.wav")
-@onready var axe_crit_on_enemy = preload("res://Assets/Music/Sound Effects/axe_hit_1.wav")
-@onready var axe_crit_on_player = preload("res://Assets/Music/Sound Effects/axe_hit.wav")
+@onready var sword_crit_on_enemy
+@onready var sword_crit_on_player
+@onready var sword_player_hit
+@onready var sword_enemy_hit
+@onready var axe_crit_on_enemy
+@onready var axe_crit_on_player
+@onready var axe_player_hit
+@onready var axe_enemy_hit
+@onready var spear_crit_on_enemy 
+@onready var spear_crit_on_player 
+@onready var spear_player_hit
+@onready var spear_enemy_hit
+@onready var player_death
+@onready var axe_enemy_death
+@onready var sword_enemy_death
+@onready var spear_enemy_death
+@onready var open_inventory
+@onready var close_inventory
+@onready var pick_up_potion
+@onready var potion_spawn
+@onready var use_potion
+@onready var upgrade_sword
+@onready var upgrade_axe
+@onready var upgrade_spear
+@onready var upgrade_health
+@onready var player_death_transition
+@onready var level_transition
+@onready var upgrade_transition
+@onready var sword_switch
+@onready var axe_switch
+@onready var spear_switch
