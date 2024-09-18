@@ -81,17 +81,15 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5bpa1")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Actions/Panel"]
+[node name="HBoxContainer" type="GridContainer" parent="Actions/Panel"]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -160.0
-grow_horizontal = 2
+offset_top = -158.0
+offset_right = 536.0
 grow_vertical = 0
-theme_override_constants/separation = 40
-alignment = 1
+columns = 2
 
 [node name="Attack" type="Button" parent="Actions/Panel/HBoxContainer"]
 layout_mode = 2
@@ -103,11 +101,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ubs5f")
 text = "Attack
 "
 
-[node name="Swap Weapon" type="Button" parent="Actions/Panel/HBoxContainer"]
+[node name="Switch" type="Button" parent="Actions/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
-text = "Swap Weapon
+text = "Switch
 "
 
 [node name="Defend" type="Button" parent="Actions/Panel/HBoxContainer"]
@@ -143,37 +141,35 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5bpa1")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Items/Panel"]
+[node name="HBoxContainer" type="GridContainer" parent="Items/Panel"]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -160.0
-grow_horizontal = 2
+offset_top = -197.0
+offset_right = 325.0
 grow_vertical = 0
-theme_override_constants/separation = 40
-alignment = 1
 
 [node name="Health" type="Button" parent="Items/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxFlat_ubs5f")
-text = "Health"
+text = "Health Potion"
 
 [node name="Shield" type="Button" parent="Items/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
-text = "Shield"
+theme_override_font_sizes/font_size = 40
+text = "Shield Potion
+"
 
 [node name="Back" type="Button" parent="Items/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Back"
 
 [node name="Battle" type="Node2D" parent="."]
@@ -196,7 +192,7 @@ position = Vector2(183, -74)
 position = Vector2(41, 183)
 
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Attack" to="Battle" method="_on_attack_pressed"]
-[connection signal="pressed" from="Actions/Panel/HBoxContainer/Swap Weapon" to="Battle" method="_on_swap_weapon_pressed"]
+[connection signal="pressed" from="Actions/Panel/HBoxContainer/Switch" to="Battle" method="_on_swap_weapon_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Defend" to="Battle" method="_on_defend_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Items" to="Battle" method="_on_items_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Health" to="Battle" method="_on_health_pressed"]

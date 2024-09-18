@@ -183,7 +183,7 @@ func _on_swap_weapon_pressed():
 	
 func disable_buttons(value):
 	$"../Actions/Panel/HBoxContainer/Attack".disabled = value
-	$"../Actions/Panel/HBoxContainer/Swap Weapon".disabled = value
+	$"../Actions/Panel/HBoxContainer/Switch".disabled = value
 	$"../Actions/Panel/HBoxContainer/Defend".disabled = value
 	$"../Actions/Panel/HBoxContainer/Items".disabled = value
 
