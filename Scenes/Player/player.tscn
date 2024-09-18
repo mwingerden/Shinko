@@ -1,9 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://xph3348axmlc"]
+[gd_scene load_steps=18 format=3 uid="uid://xph3348axmlc"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_jew5l"]
-[ext_resource type="Texture2D" uid="uid://cu10altbcsl4y" path="res://Assets/Sprites/Player/Player.png" id="2_pp8yo"]
+[ext_resource type="Texture2D" uid="uid://blh6kmcebcouk" path="res://Assets/Sprites/Player/Player_Final.png" id="2_puufc"]
 
-[sub_resource type="Animation" id="Animation_wgey8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyda8"]
+
+[sub_resource type="Animation" id="Animation_o6iqx"]
+resource_name = "sword_one"
+length = 0.9
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_rrf3p"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,8 +38,9 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_31fyj"]
-resource_name = "axe"
+[sub_resource type="Animation" id="Animation_a6hq6"]
+resource_name = "axe_one"
+length = 0.8
 loop_mode = 1
 step = 0.01
 tracks/0/type = "value"
@@ -29,15 +50,15 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.31, 0.54),
+"times": PackedFloat32Array(0, 0.45, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2)]
 }
 
-[sub_resource type="Animation" id="Animation_kvvhf"]
-resource_name = "spear"
-length = 0.6
+[sub_resource type="Animation" id="Animation_kkpf7"]
+resource_name = "spear_one"
+length = 0.8
 loop_mode = 1
 step = 0.01
 tracks/0/type = "value"
@@ -47,15 +68,17 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.24, 0.39),
+"times": PackedFloat32Array(0, 0.4, 0.61),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2)]
 }
 
-[sub_resource type="Animation" id="Animation_4xlfb"]
-resource_name = "sword"
+[sub_resource type="Animation" id="Animation_ugrtp"]
+resource_name = "sword_two"
+length = 0.9
 loop_mode = 1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,35 +86,181 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7, 0.8),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 5)]
+"values": [Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2), Vector2i(3, 3), Vector2i(3, 4), Vector2i(3, 5)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7p5e"]
+[sub_resource type="Animation" id="Animation_j0gyh"]
+resource_name = "axe_two"
+length = 0.8
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(4, 0), Vector2i(4, 1), Vector2i(4, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_i8bt8"]
+resource_name = "spear_two"
+length = 0.8
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(5, 0), Vector2i(5, 1), Vector2i(5, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_04kg5"]
+resource_name = "sword_three"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4, 0.6, 0.85, 1.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(6, 0), Vector2i(6, 1), Vector2i(6, 2), Vector2i(6, 3), Vector2i(6, 4), Vector2i(6, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_fc0r3"]
+resource_name = "sword_four"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.65, 0.9, 1.25, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(9, 0), Vector2i(9, 1), Vector2i(9, 2), Vector2i(9, 3), Vector2i(9, 4), Vector2i(9, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_sqvsi"]
+resource_name = "axe_three"
+length = 1.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.65, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(7, 0), Vector2i(7, 1), Vector2i(7, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_cbwfa"]
+resource_name = "axe_four"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.85, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(10, 0), Vector2i(10, 1), Vector2i(10, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_khtn4"]
+resource_name = "spear_three"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.55, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(8, 0), Vector2i(8, 1), Vector2i(8, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_0fb3w"]
+resource_name = "spear_four"
+length = 1.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(11, 0), Vector2i(11, 1), Vector2i(11, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwiq2"]
 _data = {
-"RESET": SubResource("Animation_wgey8"),
-"axe": SubResource("Animation_31fyj"),
-"spear": SubResource("Animation_kvvhf"),
-"sword": SubResource("Animation_4xlfb")
+"RESET": SubResource("Animation_rrf3p"),
+"axe_four": SubResource("Animation_cbwfa"),
+"axe_one": SubResource("Animation_a6hq6"),
+"axe_three": SubResource("Animation_sqvsi"),
+"axe_two": SubResource("Animation_j0gyh"),
+"spear_four": SubResource("Animation_0fb3w"),
+"spear_one": SubResource("Animation_kkpf7"),
+"spear_three": SubResource("Animation_khtn4"),
+"spear_two": SubResource("Animation_i8bt8"),
+"sword_four": SubResource("Animation_fc0r3"),
+"sword_one": SubResource("Animation_o6iqx"),
+"sword_three": SubResource("Animation_04kg5"),
+"sword_two": SubResource("Animation_ugrtp")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyda8"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jew5l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-16, 22)
 scale = Vector2(4, 4)
-texture = ExtResource("2_pp8yo")
-hframes = 3
+texture = ExtResource("2_puufc")
+hframes = 12
 vframes = 6
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_y7p5e")
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hyda8")
@@ -112,3 +281,8 @@ offset_bottom = -113.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 value = 100.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wwiq2")
+}

@@ -17,10 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SignalManager="*res://Scripts/SignalManager.gd"
-Global="*res://Scripts/Global.gd"
+SignalManager="*res://Scripts/Global/SignalManager.gd"
+Global="*res://Scripts/Global/Global.gd"
 SceneTransition="*res://Scenes/Utility/scene_transition.tscn"
-LevelManager="*res://Scripts/Utility/Level_Manager.gd"
+LevelManager="*res://Scripts/Levels/Level_Manager.gd"
+AudioPlayer="*res://Scenes/Global/audio_player.tscn"
+GlobalAudioSx="*res://Scripts/Global/Global_Audio_SX.gd"
 
 [display]
 

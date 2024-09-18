@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var shield_progress_bar = $Shield
 @onready var animation_player = $AnimationPlayer
 
-
 func _ready():
 	Global.player_current_weapon = Global.weapon.SWORD
 	SignalManager.weapon_swap.connect(swap_weapon)
@@ -34,14 +33,17 @@ func show_health_bar(value):
 func swap_weapon():
 	if Global.player_current_weapon == Global.weapon.SWORD:
 		#current_weapon = weapon.AXE
+		AudioPlayer.play_FX(GlobalAudioSx.axe_switch)
 		Global.player_current_weapon = Global.weapon.AXE
 		#print("Switched to Spear")
 	elif Global.player_current_weapon == Global.weapon.AXE:
 		#current_weapon = weapon.SPEAR
+		AudioPlayer.play_FX(GlobalAudioSx.spear_switch)
 		Global.player_current_weapon = Global.weapon.SPEAR
 		#print("Switched to Sword")
 	elif Global.player_current_weapon == Global.weapon.SPEAR:
 		#current_weapon = weapon.SWORD
+		AudioPlayer.play_FX(GlobalAudioSx.sword_switch)
 		Global.player_current_weapon = Global.weapon.SWORD
 		#print("Switched to Axe")
 
@@ -53,11 +55,34 @@ func _update_shield_bar():
 	
 func _play_animation():
 	if Global.player_current_weapon == Global.weapon.SWORD:
-		animation_player.play("sword")
+		if Global.player_age >=10 and Global.player_age < 30:
+			animation_player.play("sword_one")
+		elif Global.player_age >=30 and Global.player_age < 50:
+			animation_player.play("sword_two")
+		elif Global.player_age >=50 and Global.player_age < 70:
+			animation_player.play("sword_three")
+		elif Global.player_age >=70 and Global.player_age < 100:
+			animation_player.play("sword_four")
 	elif Global.player_current_weapon == Global.weapon.AXE:
-		animation_player.play("axe")
+		if Global.player_age >=10 and Global.player_age < 30:
+			animation_player.play("axe_one")
+		elif Global.player_age >=30 and Global.player_age < 50:
+			animation_player.play("axe_two")
+		elif Global.player_age >=50 and Global.player_age < 70:
+			animation_player.play("axe_three")
+		elif Global.player_age >=70 and Global.player_age < 100:
+			animation_player.play("axe_four")
+		#animation_player.play("axe")
 	elif Global.player_current_weapon == Global.weapon.SPEAR:
-		animation_player.play("spear")
+		if Global.player_age >=10 and Global.player_age < 30:
+			animation_player.play("spear_one")
+		elif Global.player_age >=30 and Global.player_age < 50:
+			animation_player.play("spear_two")
+		elif Global.player_age >=50 and Global.player_age < 70:
+			animation_player.play("spear_three")
+		elif Global.player_age >=70 and Global.player_age < 100:
+			animation_player.play("spear_four")
+		#animation_player.play("spear")
 
 func take_damage(value):
 	if Global.shield_on:

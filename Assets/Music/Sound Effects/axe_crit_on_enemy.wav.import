@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dvxgvkabi4at4"
+path="res://.godot/imported/axe_crit_on_enemy.wav-1a61f5297678f4bc264481e812d6a049.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/axe_crit_on_enemy.wav"
+dest_files=["res://.godot/imported/axe_crit_on_enemy.wav-1a61f5297678f4bc264481e812d6a049.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

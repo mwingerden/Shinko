@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cga7a25tb8qtq"
+path="res://.godot/imported/axe_switch.mp3-09a864c887f5e966764373a71e881b77.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/axe_switch.mp3"
+dest_files=["res://.godot/imported/axe_switch.mp3-09a864c887f5e966764373a71e881b77.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cebk1olynf3c7"
+path="res://.godot/imported/upgrade_transition.mp3-74f60b4fd9252cf132a61cbef6c431bc.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/upgrade_transition.mp3"
+dest_files=["res://.godot/imported/upgrade_transition.mp3-74f60b4fd9252cf132a61cbef6c431bc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

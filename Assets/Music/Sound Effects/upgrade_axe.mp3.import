@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://boyh6cxpj7od4"
+path="res://.godot/imported/upgrade_axe.mp3-cf9474fd3134655c0a3647717a648a30.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/upgrade_axe.mp3"
+dest_files=["res://.godot/imported/upgrade_axe.mp3-cf9474fd3134655c0a3647717a648a30.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

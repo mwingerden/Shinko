@@ -1,32 +1,118 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceoqfxrqkw12k"]
+[gd_scene load_steps=11 format=3 uid="uid://ceoqfxrqkw12k"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy_axe.gd" id="1_ynyri"]
-[ext_resource type="Texture2D" uid="uid://bgax3msu3hmqe" path="res://Assets/Sprites/Utility/Selected.png" id="2_uku2n"]
-[ext_resource type="Texture2D" uid="uid://bj6dj5o8jmjk7" path="res://icon.svg" id="3_5g3ak"]
+[ext_resource type="Texture2D" uid="uid://bgax3msu3hmqe" path="res://Assets/Sprites/Utility/Selected.png" id="2_5swa1"]
+[ext_resource type="Texture2D" uid="uid://djekt6japru8o" path="res://Assets/Sprites/Enemies/EnemyAxe.png" id="3_57py8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q78wt"]
+
+[sub_resource type="Animation" id="Animation_w6o83"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_osui6"]
+resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 5), Vector2i(0, 6), Vector2i(0, 7), Vector2i(0, 8), Vector2i(0, 9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0bmt"]
+_data = {
+"RESET": SubResource("Animation_w6o83"),
+"move": SubResource("Animation_osui6")
+}
+
+[sub_resource type="Animation" id="Animation_81n5b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Selected:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_thidh"]
+resource_name = "selected"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Selected:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqkkd"]
+_data = {
+"RESET": SubResource("Animation_81n5b"),
+"selected": SubResource("Animation_thidh")
+}
 
 [node name="EnemyAxe" type="CharacterBody2D" groups=["EnemyAxe"]]
 script = ExtResource("1_ynyri")
 
 [node name="Selected" type="Sprite2D" parent="." groups=["EnemyAxe"]]
 visible = false
-position = Vector2(0, -17)
-scale = Vector2(3, 3)
-texture = ExtResource("2_uku2n")
+scale = Vector2(4.09375, 3)
+texture = ExtResource("2_5swa1")
 vframes = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["EnemyAxe"]]
-texture = ExtResource("3_5g3ak")
+position = Vector2(3, -6)
+scale = Vector2(3, 3)
+texture = ExtResource("3_57py8")
+vframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["EnemyAxe"]]
+visible = false
 shape = SubResource("RectangleShape2D_q78wt")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["EnemyAxe"]]
+[node name="Self_Animation" type="AnimationPlayer" parent="." groups=["EnemyAxe"]]
+libraries = {
+"": SubResource("AnimationLibrary_i0bmt")
+}
 
 [node name="Health" type="ProgressBar" parent="." groups=["EnemyAxe"]]
-offset_left = -51.0
-offset_top = -99.0
-offset_right = 52.0
-offset_bottom = -72.0
+offset_left = -50.0
+offset_top = -109.0
+offset_right = 53.0
+offset_bottom = -82.0
 value = 100.0
+
+[node name="Selected_Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bqkkd")
+}
