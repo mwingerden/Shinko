@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://df8nxaxm6xjl2"
+path="res://.godot/imported/spear_crit_on_player.mp3-eebd5ea47fcb269215be0b595d8f1d15.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/spear_crit_on_player.mp3"
+dest_files=["res://.godot/imported/spear_crit_on_player.mp3-eebd5ea47fcb269215be0b595d8f1d15.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

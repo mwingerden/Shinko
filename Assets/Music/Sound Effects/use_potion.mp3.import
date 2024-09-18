@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djce57q0vp1d1"
+path="res://.godot/imported/use_potion.mp3-d7dbc0a89ecba9b8e84b7cc7ccbb2a69.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/use_potion.mp3"
+dest_files=["res://.godot/imported/use_potion.mp3-d7dbc0a89ecba9b8e84b7cc7ccbb2a69.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

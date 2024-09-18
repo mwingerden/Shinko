@@ -1,33 +1,33 @@
 extends Node
 
-@onready var sword_crit_on_enemy
-@onready var sword_crit_on_player
-@onready var sword_player_hit
-@onready var sword_enemy_hit
-@onready var axe_crit_on_enemy
-@onready var axe_crit_on_player
-@onready var axe_player_hit
-@onready var axe_enemy_hit
-@onready var spear_crit_on_enemy 
-@onready var spear_crit_on_player 
-@onready var spear_player_hit
-@onready var spear_enemy_hit
-@onready var player_death
-@onready var axe_enemy_death
-@onready var sword_enemy_death
-@onready var spear_enemy_death
-@onready var open_inventory
-@onready var close_inventory
-@onready var pick_up_potion
-@onready var potion_spawn
-@onready var use_potion
-@onready var upgrade_sword
-@onready var upgrade_axe
-@onready var upgrade_spear
-@onready var upgrade_health
-@onready var player_death_transition
-@onready var level_transition
-@onready var upgrade_transition
-@onready var sword_switch
-@onready var axe_switch
-@onready var spear_switch
+@onready var sword_crit_on_enemy = preload("res://Assets/Music/Sound Effects/sword_crit_on_enemy.wav")
+@onready var sword_crit_on_player = preload("res://Assets/Music/Sound Effects/sword_crit_on_player.mp3")
+@onready var sword_player_hit = preload("res://Assets/Music/Sound Effects/sword_player_hit.mp3")
+@onready var sword_enemy_hit = preload("res://Assets/Music/Sound Effects/sword_enemy_hit.mp3")
+@onready var axe_crit_on_enemy = preload("res://Assets/Music/Sound Effects/axe_crit_on_enemy.wav")
+@onready var axe_crit_on_player = preload("res://Assets/Music/Sound Effects/axe_crit_on_player.wav")
+@onready var axe_player_hit = preload("res://Assets/Music/Sound Effects/axe_player_hit.wav")
+@onready var axe_enemy_hit = preload("res://Assets/Music/Sound Effects/axe_enemy_hit.wav")
+@onready var spear_crit_on_enemy = preload("res://Assets/Music/Sound Effects/spear_crit_on_enemy.mp3")
+@onready var spear_crit_on_player = preload("res://Assets/Music/Sound Effects/spear_crit_on_player.mp3")
+@onready var spear_player_hit = preload("res://Assets/Music/Sound Effects/spear_player_hit.mp3")
+@onready var spear_enemy_hit = preload("res://Assets/Music/Sound Effects/spear_enemy_hit.mp3")
+@onready var player_death = preload("res://Assets/Music/Sound Effects/player_death.mp3")
+@onready var sword_enemy_death = preload("res://Assets/Music/Sound Effects/sword_enemy_death.mp3")
+@onready var axe_enemy_death = preload("res://Assets/Music/Sound Effects/axe_enemy_death.mp3")
+@onready var spear_enemy_death = preload("res://Assets/Music/Sound Effects/spear_enemy_death.mp3")
+@onready var open_inventory = preload("res://Assets/Music/Sound Effects/open_inventory.mp3") 
+@onready var close_inventory = preload("res://Assets/Music/Sound Effects/close_inventory.mp3") 
+@onready var pick_up_potion = preload("res://Assets/Music/Sound Effects/pick_up_potion.mp3") 
+@onready var potion_spawn = preload("res://Assets/Music/Sound Effects/potion_spawn.mp3") 
+@onready var use_potion = preload("res://Assets/Music/Sound Effects/use_potion.mp3") 
+@onready var upgrade_sword = preload("res://Assets/Music/Sound Effects/upgrade_sword.mp3") 
+@onready var upgrade_axe = preload("res://Assets/Music/Sound Effects/upgrade_axe.mp3") 
+@onready var upgrade_spear = preload("res://Assets/Music/Sound Effects/upgrade_spear.mp3") 
+@onready var upgrade_health = preload("res://Assets/Music/Sound Effects/upgrade_health.mp3") 
+@onready var player_death_transition = preload("res://Assets/Music/Sound Effects/player_death_transition.mp3") 
+@onready var level_transition = preload("res://Assets/Music/Sound Effects/level_transition.mp3") 
+@onready var upgrade_transition = preload("res://Assets/Music/Sound Effects/upgrade_transition.mp3") 
+@onready var sword_switch = preload("res://Assets/Music/Sound Effects/sword_switch.mp3")
+@onready var axe_switch = preload("res://Assets/Music/Sound Effects/axe_switch.mp3")
+@onready var spear_switch = preload("res://Assets/Music/Sound Effects/spear_switch.mp3")
