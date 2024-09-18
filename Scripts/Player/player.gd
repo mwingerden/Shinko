@@ -33,14 +33,17 @@ func show_health_bar(value):
 func swap_weapon():
 	if Global.player_current_weapon == Global.weapon.SWORD:
 		#current_weapon = weapon.AXE
+		AudioPlayer.play_FX(GlobalAudioSx.axe_switch)
 		Global.player_current_weapon = Global.weapon.AXE
 		#print("Switched to Spear")
 	elif Global.player_current_weapon == Global.weapon.AXE:
 		#current_weapon = weapon.SPEAR
+		AudioPlayer.play_FX(GlobalAudioSx.spear_switch)
 		Global.player_current_weapon = Global.weapon.SPEAR
 		#print("Switched to Sword")
 	elif Global.player_current_weapon == Global.weapon.SPEAR:
 		#current_weapon = weapon.SWORD
+		AudioPlayer.play_FX(GlobalAudioSx.sword_switch)
 		Global.player_current_weapon = Global.weapon.SWORD
 		#print("Switched to Axe")
 
