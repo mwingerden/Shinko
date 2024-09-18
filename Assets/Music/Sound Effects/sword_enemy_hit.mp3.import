@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cq814ooovutfs"
+path="res://.godot/imported/sword_enemy_hit.mp3-ff8d6a25d835dd0498082db4a35f76af.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/sword_enemy_hit.mp3"
+dest_files=["res://.godot/imported/sword_enemy_hit.mp3-ff8d6a25d835dd0498082db4a35f76af.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

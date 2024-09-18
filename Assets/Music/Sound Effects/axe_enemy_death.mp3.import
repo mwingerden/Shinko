@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ccew8a1yl82uc"
+path="res://.godot/imported/axe_enemy_death.mp3-d29e1b7b243261617c6ae5a2f3f440bf.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/axe_enemy_death.mp3"
+dest_files=["res://.godot/imported/axe_enemy_death.mp3-d29e1b7b243261617c6ae5a2f3f440bf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

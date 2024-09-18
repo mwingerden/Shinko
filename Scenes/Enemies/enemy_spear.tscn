@@ -106,10 +106,10 @@ libraries = {
 }
 
 [node name="Health" type="ProgressBar" parent="." groups=["Enemy"]]
-offset_left = -51.0
-offset_top = -99.0
-offset_right = 52.0
-offset_bottom = -72.0
+offset_left = -122.0
+offset_top = -315.0
+offset_right = -19.0
+offset_bottom = -288.0
 value = 100.0
 
 [node name="Selected_Animation" type="AnimationPlayer" parent="."]

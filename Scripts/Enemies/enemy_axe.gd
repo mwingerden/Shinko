@@ -51,3 +51,6 @@ func get_weapon_type():
 	
 func exp_drop():
 	return EXP_DROP
+	
+func play_death_sx():
+	AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_death)

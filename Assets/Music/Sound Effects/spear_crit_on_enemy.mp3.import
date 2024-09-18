@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ceye532m0bi12"
+path="res://.godot/imported/spear_crit_on_enemy.mp3-e0da45c70506898b74bb35d7827408a3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/spear_crit_on_enemy.mp3"
+dest_files=["res://.godot/imported/spear_crit_on_enemy.mp3-e0da45c70506898b74bb35d7827408a3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

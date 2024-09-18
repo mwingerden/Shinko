@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Utility/level_managment.gd" id="1_2inrr"]
 [ext_resource type="PackedScene" uid="uid://bbehuimg23t2u" path="res://Scenes/Utility/group_enemy_1.tscn" id="1_jtqnb"]
-[ext_resource type="Script" path="res://Scripts/Utility/battle.gd" id="1_n7xxg"]
+[ext_resource type="Script" path="res://Scripts/Levels/battle.gd" id="1_n7xxg"]
 [ext_resource type="Texture2D" uid="uid://ch8iqwe8dywst" path="res://Assets/Sprites/Background/background_final.png" id="1_st72s"]
 [ext_resource type="PackedScene" uid="uid://xph3348axmlc" path="res://Scenes/Player/player.tscn" id="3_xpy4m"]
 
@@ -187,10 +187,7 @@ position = Vector2(794, 453)
 script = null
 
 [node name="EnemyAxe" parent="Battle/GroupEnemy1" index="0"]
-position = Vector2(-471, 445)
-
-[node name="Sprite2D" parent="Battle/GroupEnemy1/EnemyAxe" index="1"]
-position = Vector2(753, -259)
+position = Vector2(270, 173)
 
 [node name="EnemySpear" parent="Battle/GroupEnemy1" index="1"]
 position = Vector2(183, -74)
@@ -207,4 +204,3 @@ position = Vector2(41, 183)
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Back" to="Battle" method="_on_back_pressed"]
 
 [editable path="Battle/GroupEnemy1"]
-[editable path="Battle/GroupEnemy1/EnemyAxe"]
