@@ -62,6 +62,7 @@ func check_exp():
 		continue_button.disabled = false
 
 func _on_continue_button_pressed():
+	continue_button.disabled = true
 	AudioPlayer.play_FX(GlobalAudioSx.continue_pressed)
 	foreground_animation_player.play("stand_up")
 	await foreground_animation_player.animation_finished

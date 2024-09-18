@@ -179,6 +179,7 @@ func show_actions_menu(value):
 	
 func _on_swap_weapon_pressed():
 	SignalManager.weapon_swap.emit()
+	disable_buttons(true)
 	enemies_turn()
 	
 func disable_buttons(value):
