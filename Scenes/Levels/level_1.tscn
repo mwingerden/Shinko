@@ -199,7 +199,7 @@ script = ExtResource("1_n7xxg")
 position = Vector2(274, 567)
 
 [node name="GroupEnemy1" parent="Battle" instance=ExtResource("1_jtqnb")]
-position = Vector2(794, 453)
+position = Vector2(710, 589)
 script = null
 
 [node name="EnemyAxe" parent="Battle/GroupEnemy1" index="0"]

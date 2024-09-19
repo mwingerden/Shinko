@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyyqli7iqtir6"]
+[gd_scene load_steps=13 format=3 uid="uid://dyyqli7iqtir6"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy_sword.gd" id="1_3gmax"]
 [ext_resource type="Texture2D" uid="uid://bgax3msu3hmqe" path="res://Assets/Sprites/Utility/Selected.png" id="2_e0ruq"]
 [ext_resource type="Texture2D" uid="uid://bnocea4ppqjgk" path="res://Assets/Sprites/Enemies/EnemySword.png" id="3_6snwe"]
+[ext_resource type="Texture2D" uid="uid://bks861fb6agl4" path="res://Assets/Sprites/GUI/health_bar_under.png" id="4_tn7to"]
+[ext_resource type="Texture2D" uid="uid://bib3n7pf7oijn" path="res://Assets/Sprites/GUI/enemy_health_progress.png" id="5_0tuf0"]
 
 [sub_resource type="Animation" id="Animation_yqsqe"]
 length = 0.001
@@ -106,12 +108,15 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("RectangleShape2D_ki30x")
 
-[node name="Health" type="ProgressBar" parent="." groups=["Enemy"]]
-offset_left = -59.0
-offset_top = -270.0
-offset_right = 44.0
-offset_bottom = -243.0
+[node name="Health" type="TextureProgressBar" parent="." groups=["Enemy"]]
+offset_left = -97.0
+offset_top = -269.0
+offset_right = 78.0
+offset_bottom = -242.0
 value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_tn7to")
+texture_progress = ExtResource("5_0tuf0")
 
 [node name="Selected_Animation" type="AnimationPlayer" parent="."]
 libraries = {
