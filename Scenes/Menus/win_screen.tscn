@@ -1,15 +1,193 @@
-[gd_scene load_steps=2 format=3 uid="uid://dh136rg0ryn47"]
+[gd_scene load_steps=10 format=3 uid="uid://dh136rg0ryn47"]
 
 [ext_resource type="Script" path="res://Scripts/Utility/win_screen.gd" id="1_3dejw"]
+[ext_resource type="Texture2D" uid="uid://fiadnyevq68r" path="res://Assets/Sprites/Background/Win_Menu.png" id="2_aapeo"]
+[ext_resource type="Texture2D" uid="uid://b6wm3b6u136at" path="res://Assets/Sprites/Background/Win_Menu_Door.png" id="3_0n7jd"]
+[ext_resource type="Theme" uid="uid://bn8q2jgcalgvh" path="res://Assets/Sprites/GUI/action_buttons.tres" id="3_rhjjx"]
+[ext_resource type="Texture2D" uid="uid://bv15dwgwx2pxi" path="res://Assets/Sprites/Background/sparkle.png" id="4_o1loj"]
+
+[sub_resource type="Animation" id="Animation_2gron"]
+resource_name = "door_open"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Doors:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qnpc8"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_mlmqg"]
+resource_name = "sparkle'"
+length = 0.55
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sparkle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sparkle2:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sparkle3:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sparkle4:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sparkle5:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sparkle6:frame_coords")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_22h3k"]
+_data = {
+"RESET": SubResource("Animation_qnpc8"),
+"door_open": SubResource("Animation_2gron"),
+"sparkle'": SubResource("Animation_mlmqg")
+}
 
 [node name="WinScreen" type="Node2D"]
 script = ExtResource("1_3dejw")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 265.0
-offset_top = 129.0
-offset_right = 493.0
-offset_bottom = 210.0
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(800, 450)
+texture = ExtResource("2_aapeo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_22h3k")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_22h3k")
+}
+
+[node name="Main Menu" type="Button" parent="."]
+offset_left = 697.0
+offset_top = 643.0
+offset_right = 925.0
+offset_bottom = 724.0
+focus_mode = 0
+theme = ExtResource("3_rhjjx")
+theme_override_font_sizes/font_size = 40
+text = "Main Menu"
+
+[node name="End" type="Button" parent="."]
+offset_left = 697.0
+offset_top = 729.0
+offset_right = 925.0
+offset_bottom = 810.0
+focus_mode = 0
+theme = ExtResource("3_rhjjx")
+theme_override_font_sizes/font_size = 40
 text = "End Game"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Sparkle" type="Sprite2D" parent="."]
+position = Vector2(1081.5, 466)
+scale = Vector2(0.578125, 0.625)
+texture = ExtResource("4_o1loj")
+hframes = 11
+
+[node name="Sparkle2" type="Sprite2D" parent="."]
+position = Vector2(1092, 472)
+scale = Vector2(0.296875, 0.320313)
+texture = ExtResource("4_o1loj")
+hframes = 11
+
+[node name="Sparkle3" type="Sprite2D" parent="."]
+position = Vector2(736, 333)
+scale = Vector2(0.296875, 0.320313)
+texture = ExtResource("4_o1loj")
+hframes = 11
+
+[node name="Sparkle4" type="Sprite2D" parent="."]
+position = Vector2(646.09, 610.358)
+scale = Vector2(0.153442, 0.14505)
+texture = ExtResource("4_o1loj")
+hframes = 11
+
+[node name="Sparkle5" type="Sprite2D" parent="."]
+position = Vector2(665, 622)
+scale = Vector2(0.296875, 0.320313)
+texture = ExtResource("4_o1loj")
+hframes = 11
+
+[node name="Sparkle6" type="Sprite2D" parent="."]
+position = Vector2(926, 355)
+scale = Vector2(0.296875, 0.320313)
+texture = ExtResource("4_o1loj")
+hframes = 11
+
+[node name="Doors" type="Sprite2D" parent="."]
+position = Vector2(800, 450)
+texture = ExtResource("3_0n7jd")
+hframes = 3
+frame = 2
+
+[connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="End" to="." method="_on_end_pressed"]
