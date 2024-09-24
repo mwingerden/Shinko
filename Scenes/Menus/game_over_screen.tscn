@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://vt4wknwwr306"]
+
+[ext_resource type="Script" path="res://Scripts/Utility/game_over_screen.gd" id="1_iiod5"]
+[ext_resource type="Texture2D" uid="uid://bt8kfgb7dc6y5" path="res://Assets/Sprites/Background/Game_Over_Menu.png" id="2_cqsgo"]
+[ext_resource type="Theme" uid="uid://bn8q2jgcalgvh" path="res://Assets/Sprites/GUI/action_buttons.tres" id="3_suhw2"]
+[ext_resource type="Theme" uid="uid://ch1o7i2nn8mwc" path="res://Assets/Sprites/GUI/upgrade_buttons.tres" id="4_l6f6i"]
+
+[node name="Game Over Screen" type="Node2D"]
+script = ExtResource("1_iiod5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(800, 450)
+texture = ExtResource("2_cqsgo")
+
+[node name="Restart" type="Button" parent="."]
+offset_left = 22.0
+offset_top = 756.0
+offset_right = 829.0
+offset_bottom = 877.0
+focus_mode = 0
+theme = ExtResource("3_suhw2")
+theme_override_font_sizes/font_size = 60
+text = "Restart a New Life"
+
+[node name="Give_UP" type="Button" parent="."]
+offset_left = 857.0
+offset_top = 760.0
+offset_right = 1560.0
+offset_bottom = 881.0
+focus_mode = 0
+theme = ExtResource("4_l6f6i")
+theme_override_font_sizes/font_size = 50
+text = "Give Up"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Give_UP" to="." method="_on_give_up_pressed"]

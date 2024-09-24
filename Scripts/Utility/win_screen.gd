@@ -6,6 +6,7 @@ extends Node2D
 func _ready():
 	sparkle.play("sparkle'")
 	door.play("door_open")
+	AudioPlayer.play_music_level()
 
 func _on_main_menu_pressed():
 	LevelManager.main_menu()
