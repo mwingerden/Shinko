@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://tpwii8y81yk4"
+path="res://.godot/imported/big-impact-7054.mp3-244af55f0d2cce82241274aa75f67ed8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/big-impact-7054.mp3"
+dest_files=["res://.godot/imported/big-impact-7054.mp3-244af55f0d2cce82241274aa75f67ed8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
