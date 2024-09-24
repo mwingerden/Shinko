@@ -179,11 +179,12 @@ func show_actions_menu(value):
 	
 func _on_swap_weapon_pressed():
 	SignalManager.weapon_swap.emit()
+	disable_buttons(true)
 	enemies_turn()
 	
 func disable_buttons(value):
 	$"../Actions/Panel/HBoxContainer/Attack".disabled = value
-	$"../Actions/Panel/HBoxContainer/Swap Weapon".disabled = value
+	$"../Actions/Panel/HBoxContainer/Switch".disabled = value
 	$"../Actions/Panel/HBoxContainer/Defend".disabled = value
 	$"../Actions/Panel/HBoxContainer/Items".disabled = value
 

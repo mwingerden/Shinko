@@ -32,3 +32,4 @@ extends Node
 @onready var axe_switch = preload("res://Assets/Music/Sound Effects/axe_switch.mp3")
 @onready var spear_switch = preload("res://Assets/Music/Sound Effects/spear_switch.mp3")
 @onready var continue_pressed = preload("res://Assets/Music/Sound Effects/continue.mp3")
+@onready var game_start = preload("res://Assets/Music/Sound Effects/big-impact-7054.mp3")

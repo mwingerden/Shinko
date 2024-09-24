@@ -7,6 +7,16 @@ func _ready():
 	level_count = dir_contents("res://Scenes/Levels/")
 	#print(level_count)
 
+func start():
+	AudioPlayer.play_FX(GlobalAudioSx.game_start)
+	SceneTransition.change_scene("res://Scenes/Levels/level_1.tscn")
+
+func credits():
+	SceneTransition.change_scene("res://Scenes/Menus/credits.tscn")
+
+func main_menu():
+	SceneTransition.change_scene("res://Scenes/Menus/main_menu.tscn")
+
 func next_level(current_level):
 	var level = current_level.to_int() + 1
 	Global.enemy_damage += level
