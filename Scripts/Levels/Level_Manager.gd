@@ -14,6 +14,9 @@ func start():
 func credits():
 	SceneTransition.change_scene("res://Scenes/Menus/credits.tscn")
 
+func main_menu():
+	SceneTransition.change_scene("res://Scenes/Menus/main_menu.tscn")
+
 func next_level(current_level):
 	var level = current_level.to_int() + 1
 	Global.enemy_damage += level
