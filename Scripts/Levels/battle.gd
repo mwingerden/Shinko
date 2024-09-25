@@ -51,55 +51,63 @@ func switch_focus(x,y):
 	enemies[y]._unselect()
 
 func check_weapon(player, weapon1, weapon2):
-	var damage = 1.0
+	var damage = 1
+	var crit = 1
+	
 	if player:
 		if weapon1 == Global.weapon.SWORD:
-			damage = Global.level_sword
+			if rng.randf_range(1.0, 100.0) <= Global.sword_crit:
+				crit = 2
+			#damage = Global.level_sword
 		elif weapon1 == Global.weapon.AXE:
-			damage = Global.level_axe
+			if rng.randf_range(1.0, 100.0) <= Global.axe_crit:
+				crit = 2
+			#damage = Global.level_axe
 		elif weapon1 == Global.weapon.SPEAR:
-			damage = Global.level_spear
+			if rng.randf_range(1.0, 100.0) <= Global.spear_crit:
+				crit = 2
+			#damage = Global.level_spear
 	else:
 		damage = Global.enemy_damage
 	
 	if weapon1 == Global.weapon.SWORD:
 		if weapon2 == Global.weapon.AXE:
-			damage += 1
+			#damage += 1
 			if player: 
 				AudioPlayer.play_FX(GlobalAudioSx.sword_crit_on_enemy)
 			else:
 				AudioPlayer.play_FX(GlobalAudioSx.sword_crit_on_player)
-			return damage
+			#return damage
 		if player: 
 			AudioPlayer.play_FX(GlobalAudioSx.sword_player_hit)
 		else:
 			AudioPlayer.play_FX(GlobalAudioSx.sword_enemy_hit)
 	elif weapon1 == Global.weapon.AXE:
 		if weapon2 == Global.weapon.SPEAR:
-			damage += 1
+			#damage += 1
 			if player: 
 				AudioPlayer.play_FX(GlobalAudioSx.axe_crit_on_enemy)
 			else:
 				AudioPlayer.play_FX(GlobalAudioSx.axe_crit_on_player)
-			return damage
+			#return damage
 		if player: 
 			AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_hit)
 		else:
 			AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_hit)
 	elif weapon1 == Global.weapon.SPEAR:
 		if weapon2 == Global.weapon.SWORD:
-			damage += 1
+			#damage += 1
 			if player: 
 				AudioPlayer.play_FX(GlobalAudioSx.spear_crit_on_enemy)
 			else:
 				AudioPlayer.play_FX(GlobalAudioSx.spear_crit_on_player)
-			return damage
+			#return damage
 		if player: 
-			AudioPlayer.play_FX(GlobalAudioSx.spear_enemy_hit)
+			AudioPlayer.play_FX(GlobalAudioSx.spear_player_hit)
 		else:
 			AudioPlayer.play_FX(GlobalAudioSx.spear_enemy_hit)
 	
-	return damage
+	return damage * crit
 
 func _on_attack_pressed():
 	disable_buttons(true)
