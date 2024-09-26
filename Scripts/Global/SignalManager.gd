@@ -16,3 +16,5 @@ signal player_restart
 signal age_up
 signal update_player_bars
 signal increase_age
+signal player_attack
+signal player_hurt

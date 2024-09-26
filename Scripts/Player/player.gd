@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var health_progress_bar = $Health
 @onready var shield_progress_bar = $Shield
 @onready var animation_player = $AnimationPlayer
+@onready var sprite_player = $Sprite2D
 
 func _ready():
 	Global.player_current_weapon = Global.weapon.SWORD
@@ -11,6 +12,8 @@ func _ready():
 	SignalManager.player_increase_health.connect(heal)
 	SignalManager.player_increase_shield.connect(increase_shield)
 	SignalManager.update_player_bars.connect(update_player_bars)
+	SignalManager.player_attack.connect(player_attack)
+	SignalManager.player_hurt.connect(player_hurt)
 	update_player_bars()
 	if Global.shield_on:
 		show_health_bar(false)
@@ -83,6 +86,24 @@ func _play_animation():
 		elif Global.player_age >=70 and Global.player_age < 100:
 			animation_player.play("spear_four")
 		#animation_player.play("spear")
+
+func player_attack():
+	sprite_player.offset.x += 20
+	await get_tree().create_timer(.3).timeout 
+	sprite_player.offset.x -= 20
+
+func player_hurt():
+	sprite_player.visible = false
+	await get_tree().create_timer(.05).timeout 
+	sprite_player.visible = true
+	await get_tree().create_timer(.05).timeout 
+	sprite_player.visible = false
+	await get_tree().create_timer(.05).timeout 
+	sprite_player.visible = true
+	await get_tree().create_timer(.05).timeout 
+	sprite_player.visible = false
+	await get_tree().create_timer(.05).timeout 
+	sprite_player.visible = true
 
 func take_damage(value):
 	if Global.shield_on:

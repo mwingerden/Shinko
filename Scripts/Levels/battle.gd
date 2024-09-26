@@ -77,11 +77,13 @@ func check_weapon(player, weapon1, weapon2):
 				AudioPlayer.play_FX(GlobalAudioSx.sword_crit_on_enemy)
 			else:
 				AudioPlayer.play_FX(GlobalAudioSx.sword_crit_on_player)
+				SignalManager.player_hurt.emit()
 			#return damage
 		if player: 
 			AudioPlayer.play_FX(GlobalAudioSx.sword_player_hit)
 		else:
 			AudioPlayer.play_FX(GlobalAudioSx.sword_enemy_hit)
+			SignalManager.player_hurt.emit()
 	elif weapon1 == Global.weapon.AXE:
 		if weapon2 == Global.weapon.SPEAR:
 			#damage += 1
@@ -89,11 +91,13 @@ func check_weapon(player, weapon1, weapon2):
 				AudioPlayer.play_FX(GlobalAudioSx.axe_crit_on_enemy)
 			else:
 				AudioPlayer.play_FX(GlobalAudioSx.axe_crit_on_player)
+				SignalManager.player_hurt.emit()
 			#return damage
 		if player: 
 			AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_hit)
 		else:
 			AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_hit)
+			SignalManager.player_hurt.emit()
 	elif weapon1 == Global.weapon.SPEAR:
 		if weapon2 == Global.weapon.SWORD:
 			#damage += 1
@@ -101,10 +105,12 @@ func check_weapon(player, weapon1, weapon2):
 				AudioPlayer.play_FX(GlobalAudioSx.spear_crit_on_enemy)
 			else:
 				AudioPlayer.play_FX(GlobalAudioSx.spear_crit_on_player)
+				SignalManager.player_hurt.emit()
 			#return damage
 		if player: 
 			AudioPlayer.play_FX(GlobalAudioSx.spear_player_hit)
 		else:
+			SignalManager.player_hurt.emit()
 			AudioPlayer.play_FX(GlobalAudioSx.spear_enemy_hit)
 	
 	return damage * crit
@@ -113,7 +119,9 @@ func _on_attack_pressed():
 	disable_buttons(true)
 	for i in enemies.size():
 		if enemies[i].is_selected():
+			SignalManager.player_attack.emit()
 			enemies[i].take_damage(check_weapon(true, Global.player_current_weapon, enemies[i].get_weapon_type()))
+			enemies[i].hurt()
 			if enemies[i].get_current_health() <= 0:
 				#Play Death Animation Here
 				enemies[i].play_death_sx()
@@ -138,6 +146,7 @@ func enemies_turn():
 	for i in enemies.size():
 		#Perform Attck Animation
 		if !defend:
+			enemies[i].attack()
 			SignalManager.player_take_damage.emit(check_weapon(false, enemies[i].get_weapon_type(), Global.player_current_weapon))
 		if Global.player_current_health <= 0:
 			return

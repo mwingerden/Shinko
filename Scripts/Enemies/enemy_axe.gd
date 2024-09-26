@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var progress_bar = $Health
 @onready var enemy_animation_player = $Self_Animation
 @onready var selected_animation_player = $Selected_Animation
+@onready var sprite_enemy = $Sprite2D
 var selected = false
 var weapon = Global.weapon.AXE
 
@@ -54,3 +55,21 @@ func exp_drop():
 	
 func play_death_sx():
 	AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_death)
+
+func attack():
+	sprite_enemy.offset.x -= 20
+	await get_tree().create_timer(.3).timeout 
+	sprite_enemy.offset.x += 20
+
+func hurt():
+	sprite_enemy.visible = false
+	await get_tree().create_timer(.05).timeout 
+	sprite_enemy.visible = true
+	await get_tree().create_timer(.05).timeout 
+	sprite_enemy.visible = false
+	await get_tree().create_timer(.05).timeout 
+	sprite_enemy.visible = true
+	await get_tree().create_timer(.05).timeout 
+	sprite_enemy.visible = false
+	await get_tree().create_timer(.05).timeout 
+	sprite_enemy.visible = true

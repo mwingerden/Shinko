@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 @onready var selected_sprite = $Selected
 @onready var progress_bar = $Health
-@onready var animation_player = $Self_Animation
+@onready var enemy_animation_player = $Self_Animation
 @onready var selected_animation_player = $Selected_Animation
+@onready var sprite_enemy = $Sprite2D
 var selected = false
-var weapon = Global.weapon.SWORD
+var weapon = Global.weapon.AXE
 
 @export var MAX_HEALTH = 2
 @export var EXP_DROP = 1
@@ -20,7 +21,7 @@ func _ready():
 	
 @warning_ignore("unused_parameter")
 func _process(delta):
-	animation_player.play("move")
+	enemy_animation_player.play("move")
 	selected_animation_player.play("selected")
 
 func _update_progress_bar():
@@ -45,7 +46,7 @@ func take_damage(value):
 
 func get_current_health():
 	return current_health
-
+	
 func get_weapon_type():
 	return weapon
 	
@@ -53,4 +54,22 @@ func exp_drop():
 	return EXP_DROP
 	
 func play_death_sx():
-	AudioPlayer.play_FX(GlobalAudioSx.sword_enemy_death)
+	AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_death)
+
+func attack():
+	sprite_enemy.offset.x -= 20
+	await get_tree().create_timer(.3).timeout 
+	sprite_enemy.offset.x += 20
+
+func hurt():
+	sprite_enemy.visible = false
+	await get_tree().create_timer(.05).timeout 
+	sprite_enemy.visible = true
+	await get_tree().create_timer(.05).timeout 
+	sprite_enemy.visible = false
+	await get_tree().create_timer(.05).timeout 
+	sprite_enemy.visible = true
+	await get_tree().create_timer(.05).timeout 
+	sprite_enemy.visible = false
+	await get_tree().create_timer(.05).timeout 
+	sprite_enemy.visible = true

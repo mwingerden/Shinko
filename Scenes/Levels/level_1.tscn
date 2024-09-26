@@ -198,6 +198,9 @@ script = ExtResource("1_n7xxg")
 [node name="Player" parent="Battle" instance=ExtResource("3_xpy4m")]
 position = Vector2(274, 567)
 
+[node name="Sprite2D" parent="Battle/Player" index="0"]
+position = Vector2(-94, 20)
+
 [node name="GroupEnemy1" parent="Battle" instance=ExtResource("1_jtqnb")]
 position = Vector2(710, 589)
 script = null
@@ -219,4 +222,5 @@ position = Vector2(41, 183)
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Shield" to="Battle" method="_on_shield_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Back" to="Battle" method="_on_back_pressed"]
 
+[editable path="Battle/Player"]
 [editable path="Battle/GroupEnemy1"]
