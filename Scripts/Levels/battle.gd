@@ -239,3 +239,7 @@ func _on_health_pressed():
 		disable_buttons(true)
 		await get_tree().create_timer(.5).timeout
 		enemies_turn()
+
+
+func _on_switch_pressed():
+	pass # Replace with function body.

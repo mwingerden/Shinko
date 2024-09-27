@@ -1,16 +1,66 @@
-[gd_scene load_steps=6 format=3 uid="uid://4g42u8fdrgrg"]
+[gd_scene load_steps=12 format=3 uid="uid://coyh18k4s33dm"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/battle.gd" id="1_g8wpy"]
-[ext_resource type="PackedScene" uid="uid://xph3348axmlc" path="res://Scenes/Player/player.tscn" id="2_s0ygd"]
-[ext_resource type="PackedScene" uid="uid://d2vvgiwe7naf3" path="res://Scenes/Utility/group_enemy_2.tscn" id="3_fb5u6"]
+[ext_resource type="Texture2D" uid="uid://ch8iqwe8dywst" path="res://Assets/Sprites/Background/background_final.png" id="1_k3po2"]
+[ext_resource type="Script" path="res://Scripts/Utility/level_managment.gd" id="1_rw8if"]
+[ext_resource type="Theme" uid="uid://bn8q2jgcalgvh" path="res://Assets/Sprites/GUI/action_buttons.tres" id="2_4www4"]
+[ext_resource type="Theme" uid="uid://bsu0js28n2tb" path="res://Assets/Sprites/GUI/inventory_buttons.tres" id="3_dwfmk"]
+[ext_resource type="Script" path="res://Scripts/Levels/battle.gd" id="4_xffih"]
+[ext_resource type="PackedScene" uid="uid://xph3348axmlc" path="res://Scenes/Player/player.tscn" id="5_ifstf"]
+[ext_resource type="PackedScene" uid="uid://d2vvgiwe7naf3" path="res://Scenes/Utility/group_enemy_2.tscn" id="7_a5c4u"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcqgi"]
+[sub_resource type="Animation" id="Animation_h64vn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ek5um"]
+resource_name = "background_final"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o4ec8"]
+_data = {
+"RESET": SubResource("Animation_h64vn"),
+"background_final": SubResource("Animation_ek5um")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wr08s"]
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g8wx"]
-bg_color = Color(1, 1, 1, 1)
+[node name="Level 2" type="Node2D"]
+script = ExtResource("1_rw8if")
 
-[node name="Level2" type="Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(800, 450)
+texture = ExtResource("1_k3po2")
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o4ec8")
+}
 
 [node name="Actions" type="Control" parent="."]
 layout_mode = 3
@@ -28,48 +78,58 @@ offset_top = -159.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_qcqgi")
+theme_override_styles/panel = SubResource("StyleBoxFlat_wr08s")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Actions/Panel"]
+[node name="HBoxContainer" type="GridContainer" parent="Actions/Panel"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -160.0
+offset_left = 6.0
+offset_top = -14.0
+offset_right = -1186.0
+offset_bottom = -8.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 40
-alignment = 1
+grow_vertical = 2
+columns = 2
 
 [node name="Attack" type="Button" parent="Actions/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-theme_override_styles/hover = SubResource("StyleBoxFlat_1g8wx")
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_4www4")
+theme_override_font_sizes/font_size = 45
 text = "Attack
 "
 
-[node name="Swap Weapon" type="Button" parent="Actions/Panel/HBoxContainer"]
+[node name="Switch" type="Button" parent="Actions/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
-text = "Swap Weapon
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_4www4")
+theme_override_font_sizes/font_size = 45
+text = "Switch
 "
 
 [node name="Defend" type="Button" parent="Actions/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_4www4")
+theme_override_font_sizes/font_size = 45
 text = "Defend
 "
 
 [node name="Items" type="Button" parent="Actions/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_4www4")
+theme_override_font_sizes/font_size = 45
 text = "Items
 "
 
@@ -86,65 +146,74 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -159.0
-offset_bottom = 1.0
+offset_left = 8.0
+offset_top = -199.0
+offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_qcqgi")
+theme_override_styles/panel = SubResource("StyleBoxFlat_wr08s")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Items/Panel"]
+[node name="HBoxContainer" type="GridContainer" parent="Items/Panel"]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -160.0
-grow_horizontal = 2
+offset_left = 2.0
+offset_top = -181.0
+offset_right = 439.0
+offset_bottom = -7.0
 grow_vertical = 0
-theme_override_constants/separation = 40
-alignment = 1
 
 [node name="Health" type="Button" parent="Items/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-theme_override_styles/hover = SubResource("StyleBoxFlat_1g8wx")
-text = "Health"
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("3_dwfmk")
+theme_override_font_sizes/font_size = 35
+text = "Health Potion"
 
 [node name="Shield" type="Button" parent="Items/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
-text = "Shield"
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("3_dwfmk")
+theme_override_font_sizes/font_size = 35
+text = "Shield Potion
+"
 
 [node name="Back" type="Button" parent="Items/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("3_dwfmk")
+theme_override_font_sizes/font_size = 35
 text = "Back"
 
 [node name="Battle" type="Node2D" parent="."]
-script = ExtResource("1_g8wpy")
+script = ExtResource("4_xffih")
 
-[node name="Player" parent="Battle" instance=ExtResource("2_s0ygd")]
-position = Vector2(403, 360)
+[node name="Player" parent="Battle" instance=ExtResource("5_ifstf")]
+position = Vector2(274, 567)
 
-[node name="Group Enemy 2" parent="Battle" instance=ExtResource("3_fb5u6")]
+[node name="Sprite2D" parent="Battle/Player" index="0"]
+position = Vector2(-94, 20)
+
+[node name="Group Enemy 2" parent="Battle" instance=ExtResource("7_a5c4u")]
+position = Vector2(886, 466)
 
 [node name="EnemyAxe" parent="Battle/Group Enemy 2" index="0"]
-position = Vector2(1034, 258)
-
-[node name="EnemyAxe2" parent="Battle/Group Enemy 2" index="1"]
-position = Vector2(1255, 527)
+position = Vector2(-168, 197)
 
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Attack" to="Battle" method="_on_attack_pressed"]
-[connection signal="pressed" from="Actions/Panel/HBoxContainer/Swap Weapon" to="Battle" method="_on_swap_weapon_pressed"]
+[connection signal="pressed" from="Actions/Panel/HBoxContainer/Switch" to="Battle" method="_on_switch_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Defend" to="Battle" method="_on_defend_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Items" to="Battle" method="_on_items_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Health" to="Battle" method="_on_health_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Shield" to="Battle" method="_on_shield_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Back" to="Battle" method="_on_back_pressed"]
 
+[editable path="Battle/Player"]
 [editable path="Battle/Group Enemy 2"]
