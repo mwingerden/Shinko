@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://72uwc7bv6sjf"]
+
+[ext_resource type="PackedScene" uid="uid://ceoqfxrqkw12k" path="res://Scenes/Enemies/enemy_axe.tscn" id="1_ylufa"]
+[ext_resource type="PackedScene" uid="uid://cul21ipddiisb" path="res://Scenes/Enemies/enemy_spear.tscn" id="2_5ymn5"]
+[ext_resource type="PackedScene" uid="uid://dyyqli7iqtir6" path="res://Scenes/Enemies/enemy_sword.tscn" id="3_r6nhv"]
+
+[node name="GroupEnemy3" type="Node2D"]
+
+[node name="EnemyAxe" parent="." instance=ExtResource("1_ylufa")]
+position = Vector2(523, 240)
+
+[node name="EnemySpear" parent="." instance=ExtResource("2_5ymn5")]
+position = Vector2(373, 559)
+
+[node name="EnemySpear2" parent="." instance=ExtResource("2_5ymn5")]
+position = Vector2(909, 521)
+
+[node name="EnemySword" parent="." instance=ExtResource("3_r6nhv")]
+position = Vector2(256, 216)

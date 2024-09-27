@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://coyh18k4s33dm"]
+[gd_scene load_steps=11 format=3 uid="uid://dv470rns0120f"]
 
-[ext_resource type="Texture2D" uid="uid://ch8iqwe8dywst" path="res://Assets/Sprites/Background/background_final.png" id="1_k3po2"]
-[ext_resource type="Script" path="res://Scripts/Utility/level_managment.gd" id="1_rw8if"]
-[ext_resource type="Theme" uid="uid://bn8q2jgcalgvh" path="res://Assets/Sprites/GUI/action_buttons.tres" id="2_4www4"]
-[ext_resource type="Theme" uid="uid://bsu0js28n2tb" path="res://Assets/Sprites/GUI/inventory_buttons.tres" id="3_dwfmk"]
-[ext_resource type="Script" path="res://Scripts/Levels/battle.gd" id="4_xffih"]
-[ext_resource type="PackedScene" uid="uid://xph3348axmlc" path="res://Scenes/Player/player.tscn" id="5_ifstf"]
-[ext_resource type="PackedScene" uid="uid://d2vvgiwe7naf3" path="res://Scenes/Utility/group_enemy_2.tscn" id="7_a5c4u"]
+[ext_resource type="Texture2D" uid="uid://ch8iqwe8dywst" path="res://Assets/Sprites/Background/background_final.png" id="1_ihom2"]
+[ext_resource type="Theme" uid="uid://bn8q2jgcalgvh" path="res://Assets/Sprites/GUI/action_buttons.tres" id="2_7xiim"]
+[ext_resource type="Theme" uid="uid://bsu0js28n2tb" path="res://Assets/Sprites/GUI/inventory_buttons.tres" id="3_re5aq"]
+[ext_resource type="Script" path="res://Scripts/Levels/battle.gd" id="4_xthkh"]
+[ext_resource type="PackedScene" uid="uid://xph3348axmlc" path="res://Scenes/Player/player.tscn" id="5_icbkx"]
+[ext_resource type="PackedScene" uid="uid://cgjcubyuulfy2" path="res://Scenes/Utility/group_enemy_5.tscn" id="6_4x8px"]
 
 [sub_resource type="Animation" id="Animation_h64vn"]
 length = 0.001
@@ -46,15 +45,14 @@ _data = {
 "background_final": SubResource("Animation_ek5um")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wr08s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf772"]
 bg_color = Color(1, 1, 1, 0)
 
-[node name="Level 2" type="Node2D"]
-script = ExtResource("1_rw8if")
+[node name="Level 5" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(800, 450)
-texture = ExtResource("1_k3po2")
+texture = ExtResource("1_ihom2")
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -78,7 +76,7 @@ offset_top = -159.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wr08s")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bf772")
 
 [node name="HBoxContainer" type="GridContainer" parent="Actions/Panel"]
 layout_mode = 1
@@ -98,7 +96,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
-theme = ExtResource("2_4www4")
+theme = ExtResource("2_7xiim")
 theme_override_font_sizes/font_size = 45
 text = "Attack
 "
@@ -108,7 +106,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
-theme = ExtResource("2_4www4")
+theme = ExtResource("2_7xiim")
 theme_override_font_sizes/font_size = 45
 text = "Switch
 "
@@ -118,7 +116,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
-theme = ExtResource("2_4www4")
+theme = ExtResource("2_7xiim")
 theme_override_font_sizes/font_size = 45
 text = "Defend
 "
@@ -128,7 +126,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
-theme = ExtResource("2_4www4")
+theme = ExtResource("2_7xiim")
 theme_override_font_sizes/font_size = 45
 text = "Items
 "
@@ -151,7 +149,7 @@ offset_top = -199.0
 offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wr08s")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bf772")
 
 [node name="HBoxContainer" type="GridContainer" parent="Items/Panel"]
 layout_mode = 1
@@ -169,7 +167,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
-theme = ExtResource("3_dwfmk")
+theme = ExtResource("3_re5aq")
 theme_override_font_sizes/font_size = 35
 text = "Health Potion"
 
@@ -178,7 +176,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
-theme = ExtResource("3_dwfmk")
+theme = ExtResource("3_re5aq")
 theme_override_font_sizes/font_size = 35
 text = "Shield Potion
 "
@@ -188,33 +186,41 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
-theme = ExtResource("3_dwfmk")
+theme = ExtResource("3_re5aq")
 theme_override_font_sizes/font_size = 35
 text = "Back"
 
 [node name="Battle" type="Node2D" parent="."]
-script = ExtResource("4_xffih")
+script = ExtResource("4_xthkh")
 
-[node name="Player" parent="Battle" instance=ExtResource("5_ifstf")]
+[node name="Player" parent="Battle" instance=ExtResource("5_icbkx")]
 position = Vector2(274, 567)
 
 [node name="Sprite2D" parent="Battle/Player" index="0"]
 position = Vector2(-94, 20)
 
-[node name="Group Enemy 2" parent="Battle" instance=ExtResource("7_a5c4u")]
-position = Vector2(886, 466)
+[node name="GroupEnemy5" parent="Battle" instance=ExtResource("6_4x8px")]
 
-[node name="EnemyAxe" parent="Battle/Group Enemy 2" index="0"]
-position = Vector2(-242, 211)
+[node name="EnemyAxe" parent="Battle/GroupEnemy5" index="0"]
+position = Vector2(591, 611)
 
-[node name="EnemySword" parent="Battle/Group Enemy 2" index="1"]
-position = Vector2(-10, 247)
+[node name="EnemyAxe2" parent="Battle/GroupEnemy5" index="1"]
+position = Vector2(801, 662)
 
-[node name="EnemySword2" parent="Battle/Group Enemy 2" index="2"]
-position = Vector2(85, 369)
+[node name="EnemyAxe3" parent="Battle/GroupEnemy5" index="2"]
+position = Vector2(652, 713)
 
-[node name="EnemySpear" parent="Battle/Group Enemy 2" index="3"]
-position = Vector2(449, 278)
+[node name="EnemySword" parent="Battle/GroupEnemy5" index="3"]
+position = Vector2(975, 694)
+
+[node name="EnemySword2" parent="Battle/GroupEnemy5" index="4"]
+position = Vector2(1034, 851)
+
+[node name="EnemySpear" parent="Battle/GroupEnemy5" index="5"]
+position = Vector2(1414, 687)
+
+[node name="EnemySpear2" parent="Battle/GroupEnemy5" index="6"]
+position = Vector2(1360, 837)
 
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Attack" to="Battle" method="_on_attack_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Switch" to="Battle" method="_on_switch_pressed"]
@@ -225,4 +231,4 @@ position = Vector2(449, 278)
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Back" to="Battle" method="_on_back_pressed"]
 
 [editable path="Battle/Player"]
-[editable path="Battle/Group Enemy 2"]
+[editable path="Battle/GroupEnemy5"]

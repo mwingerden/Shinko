@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxjcta41g20hk"]
+
+[ext_resource type="PackedScene" uid="uid://dyyqli7iqtir6" path="res://Scenes/Enemies/enemy_sword.tscn" id="1_odljw"]
+[ext_resource type="PackedScene" uid="uid://cul21ipddiisb" path="res://Scenes/Enemies/enemy_spear.tscn" id="2_6dayx"]
+
+[node name="GroupEnemy4" type="Node2D"]
+
+[node name="EnemySword" parent="." instance=ExtResource("1_odljw")]
+
+[node name="EnemySword2" parent="." instance=ExtResource("1_odljw")]
+position = Vector2(-8, 323)
+
+[node name="EnemySpear" parent="." instance=ExtResource("2_6dayx")]
+position = Vector2(479, 229)
+
+[node name="EnemySpear2" parent="." instance=ExtResource("2_6dayx")]
+position = Vector2(670, 622)
+
+[node name="EnemySpear3" parent="." instance=ExtResource("2_6dayx")]
+position = Vector2(288, 579)
