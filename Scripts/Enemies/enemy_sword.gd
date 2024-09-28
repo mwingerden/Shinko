@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var selected_animation_player = $Selected_Animation
 @onready var sprite_enemy = $Sprite2D
 var selected = false
-var weapon = Global.weapon.AXE
+var weapon = Global.weapon.SWORD
 
 @export var MAX_HEALTH = 2
 @export var EXP_DROP = 1

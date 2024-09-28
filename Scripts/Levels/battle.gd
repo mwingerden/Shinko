@@ -30,11 +30,11 @@ func _ready():
 	
 @warning_ignore("unused_parameter")
 func _process(delta):
-	if !enemy_turn and Input.is_action_just_pressed("ui_up"):
+	if !enemy_turn and Input.is_action_just_pressed("ui_right"):
 		if index > 0:
 			index -= 1
 			switch_focus(index, index + 1)
-	elif !enemy_turn and Input.is_action_just_pressed("ui_down"):
+	elif !enemy_turn and Input.is_action_just_pressed("ui_left"):
 		if index < enemies.size() - 1:
 			index += 1
 			switch_focus(index, index - 1)
@@ -50,68 +50,85 @@ func switch_focus(x,y):
 	enemies[x]._select()
 	enemies[y]._unselect()
 
+func check_crit(weapon):
+	var crit = 1
+	print("Sword Crit Chance: " + str(Global.sword_crit) + "\n")
+	print("Axe Crit Chance: " + str(Global.axe_crit) + "\n")
+	print("Spear Crit Chance: " + str(Global.spear_crit) + "\n")
+	if weapon == Global.weapon.SWORD:
+		if rng.randf_range(1.0, 100.0) <= Global.sword_crit:
+			crit = 2
+			print("Sword Crit\n")
+	elif weapon == Global.weapon.AXE:
+		if rng.randf_range(1.0, 100.0) <= Global.axe_crit:
+			crit = 2
+			print("Axe Crit\n")
+	elif weapon == Global.weapon.SPEAR:
+		if rng.randf_range(1.0, 100.0) <= Global.spear_crit:
+			crit = 2
+			print("Spear Crit\n")
+	return crit
+
 func check_weapon(player, weapon1, weapon2):
 	var damage = 1
 	var crit = 1
 	
 	if player:
-		if weapon1 == Global.weapon.SWORD:
-			if rng.randf_range(1.0, 100.0) <= Global.sword_crit:
-				crit = 2
-			#damage = Global.level_sword
-		elif weapon1 == Global.weapon.AXE:
-			if rng.randf_range(1.0, 100.0) <= Global.axe_crit:
-				crit = 2
-			#damage = Global.level_axe
-		elif weapon1 == Global.weapon.SPEAR:
-			if rng.randf_range(1.0, 100.0) <= Global.spear_crit:
-				crit = 2
-			#damage = Global.level_spear
+		print("Player\n")
+		crit = check_crit(weapon1)
 	else:
+		print("Enemy: " + str(weapon1) + "\n")
+		print("Enemy Damage: " + str(Global.enemy_damage) + "\n")
 		damage = Global.enemy_damage
 	
 	if weapon1 == Global.weapon.SWORD:
 		if weapon2 == Global.weapon.AXE:
-			#damage += 1
+			damage += 1
+			print("Sword on Axe\n")
 			if player: 
 				AudioPlayer.play_FX(GlobalAudioSx.sword_crit_on_enemy)
 			else:
 				AudioPlayer.play_FX(GlobalAudioSx.sword_crit_on_player)
 				SignalManager.player_hurt.emit()
-			#return damage
-		if player: 
-			AudioPlayer.play_FX(GlobalAudioSx.sword_player_hit)
 		else:
-			AudioPlayer.play_FX(GlobalAudioSx.sword_enemy_hit)
-			SignalManager.player_hurt.emit()
+			print("Normal Sword Attack\n")
+			if player: 
+				AudioPlayer.play_FX(GlobalAudioSx.sword_player_hit)
+			else:
+				AudioPlayer.play_FX(GlobalAudioSx.sword_enemy_hit)
+				SignalManager.player_hurt.emit()
 	elif weapon1 == Global.weapon.AXE:
 		if weapon2 == Global.weapon.SPEAR:
-			#damage += 1
+			damage += 1
+			print("Axe on Spear\n")
 			if player: 
 				AudioPlayer.play_FX(GlobalAudioSx.axe_crit_on_enemy)
 			else:
 				AudioPlayer.play_FX(GlobalAudioSx.axe_crit_on_player)
 				SignalManager.player_hurt.emit()
-			#return damage
-		if player: 
-			AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_hit)
 		else:
-			AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_hit)
-			SignalManager.player_hurt.emit()
+			print("Normal Axe Attack\n")
+			if player: 
+				AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_hit)
+			else:
+				AudioPlayer.play_FX(GlobalAudioSx.axe_enemy_hit)
+				SignalManager.player_hurt.emit()
 	elif weapon1 == Global.weapon.SPEAR:
 		if weapon2 == Global.weapon.SWORD:
-			#damage += 1
+			damage += 1
+			print("Spear on Sword\n")
 			if player: 
 				AudioPlayer.play_FX(GlobalAudioSx.spear_crit_on_enemy)
 			else:
 				AudioPlayer.play_FX(GlobalAudioSx.spear_crit_on_player)
 				SignalManager.player_hurt.emit()
-			#return damage
-		if player: 
-			AudioPlayer.play_FX(GlobalAudioSx.spear_player_hit)
 		else:
-			SignalManager.player_hurt.emit()
-			AudioPlayer.play_FX(GlobalAudioSx.spear_enemy_hit)
+			print("Normal Spear Attack\n")
+			if player: 
+				AudioPlayer.play_FX(GlobalAudioSx.spear_player_hit)
+			else:
+				SignalManager.player_hurt.emit()
+				AudioPlayer.play_FX(GlobalAudioSx.spear_enemy_hit)
 	
 	return damage * crit
 
@@ -132,8 +149,7 @@ func _on_attack_pressed():
 				if enemies.size() > 0:
 					enemies[0]._select()
 					index = 0
-			else:
-				await get_tree().create_timer(.5).timeout
+			await get_tree().create_timer(.8).timeout
 			break
 	if enemies.size() <= 0:
 		await get_tree().create_timer(1).timeout
@@ -150,7 +166,7 @@ func enemies_turn():
 			SignalManager.player_take_damage.emit(check_weapon(false, enemies[i].get_weapon_type(), Global.player_current_weapon))
 		if Global.player_current_health <= 0:
 			return
-		await get_tree().create_timer(.5).timeout
+		await get_tree().create_timer(.8).timeout
 	enemy_turn = false
 	defend = false
 	if potion_spawn: 
@@ -167,9 +183,9 @@ func player_death():
 
 func spawn_potion(pos):
 	var rand_drop = rng.randi_range(1, 100)
-	if rand_drop <= 99:
-		var rand_potion = rng.randi_range(0, 1)
-		if rand_potion:
+	if rand_drop <= 30:
+		var rand_potion = rng.randi_range(1, 30)
+		if rand_potion > 10:
 			potion = health_potion.instantiate()
 			AudioPlayer.play_FX(GlobalAudioSx.potion_spawn)
 			#play spawn animation and sound effect
@@ -226,20 +242,18 @@ func _on_shield_pressed():
 		SignalManager.player_increase_shield.emit()
 		show_actions_menu(true)
 		disable_buttons(true)
-		await get_tree().create_timer(.5).timeout
+		await get_tree().create_timer(.8).timeout
 		enemies_turn()
 
 func _on_health_pressed():
 	if Global.health_potion_count > 0:
 		AudioPlayer.play_FX(GlobalAudioSx.use_potion)
 		Global.health_potion_count -= 1
-		#player.heal()
 		SignalManager.player_increase_health.emit()
 		show_actions_menu(true)
 		disable_buttons(true)
-		await get_tree().create_timer(.5).timeout
+		await get_tree().create_timer(.8).timeout
 		enemies_turn()
-
 
 func _on_switch_pressed():
 	pass # Replace with function body.

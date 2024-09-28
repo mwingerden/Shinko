@@ -13,10 +13,11 @@ var sword_crit = 0
 var axe_crit = 0
 var spear_crit = 0
 var level_health = 0
+var PLAYER_STARTING_HEALTH = 10
 var MAX_PLAYER_HEALTH = 10
 var MAX_PLAYER_SHIELD = 10
 var heal_amount = 1
-var increase_shield_amount = 10
+var increase_shield_amount = 5
 var shield_on = false
 var player_age = 10
 var player_current_health = MAX_PLAYER_HEALTH
@@ -76,6 +77,7 @@ func upgrade_spear(current_level):
 	
 func upgrade_health():
 	level_health += 1
+	MAX_PLAYER_HEALTH += 1
 	
 func exp_add(value):
 	current_exp_count += value

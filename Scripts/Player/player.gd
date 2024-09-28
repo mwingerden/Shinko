@@ -51,7 +51,10 @@ func swap_weapon():
 		#print("Switched to Axe")
 
 func _update_health_bar():
+	health_progress_bar.max_value = Global.MAX_PLAYER_HEALTH * 10
 	health_progress_bar.value = (float(Global.player_current_health) / Global.MAX_PLAYER_HEALTH) * 100
+	print("Player level health: " + str(Global.level_health) + "\n")
+	print("Player Health: " + str(health_progress_bar.value) + "\n")
 
 func _update_shield_bar():
 	shield_progress_bar.value = (float(Global.player_current_shield) / Global.MAX_PLAYER_SHIELD) * 100
@@ -125,5 +128,7 @@ func increase_shield():
 	
 func heal():
 	if Global.player_current_health <= Global.MAX_PLAYER_HEALTH:
+		print("Player Current Health: " + str(Global.player_current_health) + "\n")
 		Global.player_current_health += Global.heal_amount
+		print("Player Current Health: " + str(Global.player_current_health) + "\n")
 	update_player_bars()
