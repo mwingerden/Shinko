@@ -19,7 +19,7 @@ func main_menu():
 
 func next_level(current_level):
 	var level = current_level.to_int() + 1
-	Global.enemy_damage += level
+	Global.enemy_damage += .5
 	if level > level_count:
 		SceneTransition.change_scene("res://Scenes/Menus/win_screen.tscn")
 	else:

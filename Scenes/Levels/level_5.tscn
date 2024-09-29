@@ -203,21 +203,27 @@ position = Vector2(-94, 20)
 
 [node name="EnemyAxe" parent="Battle/GroupEnemy5" index="0"]
 position = Vector2(591, 611)
+MAX_HEALTH = 4
 
 [node name="EnemyAxe2" parent="Battle/GroupEnemy5" index="1"]
 position = Vector2(801, 662)
+MAX_HEALTH = 4
 
 [node name="EnemyAxe3" parent="Battle/GroupEnemy5" index="2"]
 position = Vector2(652, 713)
+MAX_HEALTH = 4
 
 [node name="EnemySword" parent="Battle/GroupEnemy5" index="3"]
 position = Vector2(975, 694)
+MAX_HEALTH = 4
 
 [node name="EnemySword2" parent="Battle/GroupEnemy5" index="4"]
 position = Vector2(1034, 851)
+MAX_HEALTH = 4
 
 [node name="EnemySpear" parent="Battle/GroupEnemy5" index="5"]
 position = Vector2(1414, 687)
+MAX_HEALTH = 4
 
 [node name="EnemySpear2" parent="Battle/GroupEnemy5" index="6"]
 position = Vector2(1360, 837)

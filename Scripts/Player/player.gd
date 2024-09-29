@@ -53,11 +53,16 @@ func swap_weapon():
 func _update_health_bar():
 	health_progress_bar.max_value = Global.MAX_PLAYER_HEALTH * 10
 	health_progress_bar.value = (float(Global.player_current_health) / Global.MAX_PLAYER_HEALTH) * 100
-	print("Player level health: " + str(Global.level_health) + "\n")
-	print("Player Health: " + str(health_progress_bar.value) + "\n")
+	#print("Player level health: " + str(Global.level_health) + "\n")
+	#print("Player Health: " + str(health_progress_bar.value) + "\n")
 
 func _update_shield_bar():
+	#shield_progress_bar.value = (float(Global.player_current_shield) / Global.MAX_PLAYER_SHIELD) * 100
+	shield_progress_bar.max_value = Global.MAX_PLAYER_SHIELD * 10
+	#print(shield_progress_bar.max_value)
 	shield_progress_bar.value = (float(Global.player_current_shield) / Global.MAX_PLAYER_SHIELD) * 100
+	#print("Player level health: " + str(Global.level_health) + "\n")
+	#print("Player Health: " + str(health_progress_bar.value) + "\n")
 	
 func _play_animation():
 	if Global.player_current_weapon == Global.weapon.SWORD:
@@ -121,7 +126,9 @@ func take_damage(value):
 		SignalManager.player_death.emit()
 	
 func increase_shield():
-	Global.player_current_shield += Global.increase_shield_amount
+	#print(Global.MAX_PLAYER_SHIELD)
+	Global.player_current_shield += Global.MAX_PLAYER_SHIELD * .5
+	#print(Global.player_current_shield)
 	if Global.player_current_shield > Global.MAX_PLAYER_SHIELD:
 		Global.player_current_shield = Global.MAX_PLAYER_SHIELD
 	show_health_bar(false)

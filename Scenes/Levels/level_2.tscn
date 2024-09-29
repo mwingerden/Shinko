@@ -206,15 +206,19 @@ position = Vector2(886, 466)
 
 [node name="EnemyAxe" parent="Battle/Group Enemy 2" index="0"]
 position = Vector2(-242, 211)
+MAX_HEALTH = 3
 
 [node name="EnemySword" parent="Battle/Group Enemy 2" index="1"]
 position = Vector2(-10, 247)
+MAX_HEALTH = 3
 
 [node name="EnemySword2" parent="Battle/Group Enemy 2" index="2"]
 position = Vector2(85, 369)
+MAX_HEALTH = 3
 
 [node name="EnemySpear" parent="Battle/Group Enemy 2" index="3"]
 position = Vector2(449, 278)
+MAX_HEALTH = 3
 
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Attack" to="Battle" method="_on_attack_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Switch" to="Battle" method="_on_switch_pressed"]

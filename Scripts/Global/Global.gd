@@ -3,7 +3,7 @@ extends Node
 var STARTING_EXP = 0
 var current_exp_count = STARTING_EXP
 var health_potion_count = 1
-var shield_potion_count = 1
+var shield_potion_count = 5
 var player_current_weapon = 0
 enum weapon {SWORD, AXE, SPEAR}
 var level_sword = 0
@@ -78,6 +78,7 @@ func upgrade_spear(current_level):
 func upgrade_health():
 	level_health += 1
 	MAX_PLAYER_HEALTH += 1
+	MAX_PLAYER_SHIELD += 1
 	
 func exp_add(value):
 	current_exp_count += value
@@ -112,7 +113,7 @@ func exp_sub_health(current_level):
 		current_exp_count -= 5
 
 func age_up():
-	player_age += 1000
+	player_age += 5
 	#print("Player is age: " + str(player_age))
 
 func player_restart():

@@ -130,6 +130,9 @@ func check_exp():
 	elif Global.level_health >= 20:
 		if Global.current_exp_count < 5:
 			health_upgrade_button.disabled = true
+	
+	if sword_upgrade_button.disabled and axe_upgrade_button.disabled and spear_upgrade_button.disabled and health_upgrade_button.disabled:
+		continue_button.disabled = false
 
 func _on_continue_button_pressed():
 	continue_button.disabled = true
