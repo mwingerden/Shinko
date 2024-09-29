@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dh136rg0ryn47"]
+[gd_scene load_steps=11 format=3 uid="uid://dh136rg0ryn47"]
 
 [ext_resource type="Script" path="res://Scripts/Utility/win_screen.gd" id="1_3dejw"]
 [ext_resource type="Texture2D" uid="uid://fiadnyevq68r" path="res://Assets/Sprites/Background/Win_Menu.png" id="2_aapeo"]
 [ext_resource type="Texture2D" uid="uid://b6wm3b6u136at" path="res://Assets/Sprites/Background/Win_Menu_Door.png" id="3_0n7jd"]
 [ext_resource type="Theme" uid="uid://bn8q2jgcalgvh" path="res://Assets/Sprites/GUI/action_buttons.tres" id="3_rhjjx"]
 [ext_resource type="Texture2D" uid="uid://bv15dwgwx2pxi" path="res://Assets/Sprites/Background/sparkle.png" id="4_o1loj"]
+[ext_resource type="FontFile" uid="uid://cvimckk41jee1" path="res://Assets/Sprites/GUI/Pixelme.ttf" id="6_a3pod"]
+
+[sub_resource type="Animation" id="Animation_qnpc8"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_2gron"]
 resource_name = "door_open"
@@ -21,9 +25,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_qnpc8"]
-length = 0.001
 
 [sub_resource type="Animation" id="Animation_mlmqg"]
 resource_name = "sparkle'"
@@ -188,6 +189,24 @@ position = Vector2(800, 450)
 texture = ExtResource("3_0n7jd")
 hframes = 3
 frame = 2
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 50.0
+offset_top = 187.0
+offset_right = 1561.0
+offset_bottom = 464.0
+grow_horizontal = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.470588, 0.317647, 0.662745, 1)
+theme_override_colors/font_outline_color = Color(0.0196078, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_a3pod")
+theme_override_font_sizes/font_size = 65
+text = "You conquered the tomb. 
+Enjoy your riches for as much as you have left."
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="End" to="." method="_on_end_pressed"]
