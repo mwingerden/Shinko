@@ -209,7 +209,7 @@ script = null
 position = Vector2(-9, 49)
 
 [node name="EnemyAxe2" parent="Battle/GroupEnemy1" index="1"]
-position = Vector2(202, 178)
+position = Vector2(129, 173)
 
 [node name="EnemyAxe3" parent="Battle/GroupEnemy1" index="2"]
 position = Vector2(312, 35)
@@ -218,7 +218,7 @@ position = Vector2(312, 35)
 position = Vector2(602, 153)
 
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Attack" to="Battle" method="_on_attack_pressed"]
-[connection signal="pressed" from="Actions/Panel/HBoxContainer/Switch" to="Battle" method="_on_swap_weapon_pressed"]
+[connection signal="pressed" from="Actions/Panel/HBoxContainer/Switch" to="Battle" method="_on_switch_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Defend" to="Battle" method="_on_defend_pressed"]
 [connection signal="pressed" from="Actions/Panel/HBoxContainer/Items" to="Battle" method="_on_items_pressed"]
 [connection signal="pressed" from="Items/Panel/HBoxContainer/Health" to="Battle" method="_on_health_pressed"]

@@ -27,14 +27,15 @@ func _ready():
 	#player = get_child(0)
 	show_actions_menu(true)
 	SignalManager.player_death.connect(player_death)
+	SignalManager.game_over.connect(game_over)
 	
 @warning_ignore("unused_parameter")
 func _process(delta):
-	if !enemy_turn and Input.is_action_just_pressed("ui_right"):
+	if !enemy_turn and Input.is_action_just_pressed("ui_left"):
 		if index > 0:
 			index -= 1
 			switch_focus(index, index + 1)
-	elif !enemy_turn and Input.is_action_just_pressed("ui_left"):
+	elif !enemy_turn and Input.is_action_just_pressed("ui_right"):
 		if index < enemies.size() - 1:
 			index += 1
 			switch_focus(index, index - 1)
@@ -178,7 +179,16 @@ func player_death():
 	disable_buttons(true)
 	AudioPlayer.play_FX(GlobalAudioSx.player_death)
 	SignalManager.age_up.emit()
-	SceneTransition.change_scene_death()
+	if Global.player_age >= 100:
+		SignalManager.game_over.emit()
+	else:
+		SceneTransition.change_scene_death()
+	AudioPlayer.play_FX(GlobalAudioSx.player_death_transition)
+
+func game_over():
+	disable_buttons(true)
+	AudioPlayer.play_FX(GlobalAudioSx.player_death)
+	SceneTransition.game_lose()
 	AudioPlayer.play_FX(GlobalAudioSx.player_death_transition)
 
 func spawn_potion(pos):
@@ -210,10 +220,10 @@ func show_actions_menu(value):
 	actions_menu.visible = value
 	item_menu.visible = !value
 	
-func _on_swap_weapon_pressed():
-	SignalManager.weapon_swap.emit()
-	disable_buttons(true)
-	enemies_turn()
+#func _on_swap_weapon_pressed():
+	#SignalManager.weapon_swap.emit()
+	#disable_buttons(true)
+	#enemies_turn()
 	
 func disable_buttons(value):
 	$"../Actions/Panel/HBoxContainer/Attack".disabled = value
@@ -256,4 +266,6 @@ func _on_health_pressed():
 		enemies_turn()
 
 func _on_switch_pressed():
-	pass # Replace with function body.
+	SignalManager.weapon_swap.emit()
+	disable_buttons(true)
+	enemies_turn()

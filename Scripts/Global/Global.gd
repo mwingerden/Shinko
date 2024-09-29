@@ -1,7 +1,7 @@
 extends Node
 
-var starting_exp = 0
-var current_exp_count = starting_exp
+var STARTING_EXP = 0
+var current_exp_count = STARTING_EXP
 var health_potion_count = 1
 var shield_potion_count = 1
 var player_current_weapon = 0
@@ -112,12 +112,28 @@ func exp_sub_health(current_level):
 		current_exp_count -= 5
 
 func age_up():
-	player_age += 1
+	player_age += 1000
 	#print("Player is age: " + str(player_age))
 
 func player_restart():
 	Global.player_current_health = Global.MAX_PLAYER_HEALTH + Global.level_health
 	#print(Global.player_current_health)
 	Global.player_current_shield = 0
-	Global.current_exp_count = Global.starting_exp
+	#Global.current_exp_count = Global.starting_exp
 	enemy_damage = STARTING_ENEMY_DAMAGE
+
+func restart_game():
+	player_current_health = PLAYER_STARTING_HEALTH 
+	enemy_damage = STARTING_ENEMY_DAMAGE
+	current_exp_count = STARTING_EXP
+	player_current_shield = 0
+	health_potion_count = 1
+	shield_potion_count = 1
+	level_sword = 0
+	level_axe = 0
+	level_spear = 0
+	sword_crit = 0
+	axe_crit = 0
+	spear_crit = 0
+	level_health = 0
+	player_age = 10

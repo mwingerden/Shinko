@@ -18,3 +18,4 @@ signal update_player_bars
 signal increase_age
 signal player_attack
 signal player_hurt
+signal game_over

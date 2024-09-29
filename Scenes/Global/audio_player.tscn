@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccfvro3uackv"]
+[gd_scene load_steps=3 format=3 uid="uid://ccfvro3uackv"]
 
+[ext_resource type="AudioStream" uid="uid://dlv680wdc6sp7" path="res://Assets/Music/OST/Shinko Track WAVE.wav" id="1_2yxng"]
 [ext_resource type="Script" path="res://Scripts/Music/audio_player.gd" id="1_uqjoc"]
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_2yxng")
+autoplay = true
 script = ExtResource("1_uqjoc")
