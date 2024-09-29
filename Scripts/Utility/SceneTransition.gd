@@ -23,6 +23,12 @@ func change_scene_restart():
 	await animation.animation_finished
 	get_tree().change_scene_to_file("res://Scenes/Levels/level_1.tscn")
 	animation.play_backwards("dissolve")
+	
+func game_lose():
+	animation.play("dissolve")
+	await animation.animation_finished
+	get_tree().change_scene_to_file("res://Scenes/Menus/game_over_screen.tscn")
+	animation.play_backwards("dissolve")
 
 func quit_game():
 	animation.play("dissolve")

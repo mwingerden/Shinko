@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://vt4wknwwr306"]
+[gd_scene load_steps=6 format=3 uid="uid://vt4wknwwr306"]
 
 [ext_resource type="Script" path="res://Scripts/Utility/game_over_screen.gd" id="1_iiod5"]
 [ext_resource type="Texture2D" uid="uid://bt8kfgb7dc6y5" path="res://Assets/Sprites/Background/Game_Over_Menu.png" id="2_cqsgo"]
 [ext_resource type="Theme" uid="uid://bn8q2jgcalgvh" path="res://Assets/Sprites/GUI/action_buttons.tres" id="3_suhw2"]
 [ext_resource type="Theme" uid="uid://ch1o7i2nn8mwc" path="res://Assets/Sprites/GUI/upgrade_buttons.tres" id="4_l6f6i"]
+[ext_resource type="FontFile" uid="uid://cvimckk41jee1" path="res://Assets/Sprites/GUI/Pixelme.ttf" id="5_5xa3w"]
 
 [node name="Game Over Screen" type="Node2D"]
 script = ExtResource("1_iiod5")
@@ -31,6 +32,17 @@ focus_mode = 0
 theme = ExtResource("4_l6f6i")
 theme_override_font_sizes/font_size = 50
 text = "Give Up"
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1602.0
+offset_bottom = 348.0
+theme_override_colors/font_color = Color(0.470588, 0.317647, 0.662745, 1)
+theme_override_fonts/font = ExtResource("5_5xa3w")
+theme_override_font_sizes/font_size = 70
+text = "Your life ends in the tomb...
+like so many others."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Give_UP" to="." method="_on_give_up_pressed"]
